@@ -1,0 +1,35 @@
+'use client';
+
+import Link from 'next/link';
+
+export default function Header() {
+  return (
+    <nav className="fixed top-0 w-full z-50 bg-stone-50/70 dark:bg-stone-900/70 backdrop-blur-xl shadow-sm">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <Link href="/" className="font-headline text-2xl font-bold text-stone-900 dark:text-stone-50">
+          NomorKu
+        </Link>
+        <div className="hidden md:flex items-center gap-8">
+          <Link href="/#koleksi" className="font-headline tracking-tight text-lg text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-50 transition-all duration-300">
+            Koleksi
+          </Link>
+          <Link href="/#cara-pesan" className="font-headline tracking-tight text-lg text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-50 transition-all duration-300">
+            Cara Pesan
+          </Link>
+          <Link href="/#galeri" className="font-headline tracking-tight text-lg text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-50 transition-all duration-300">
+            Galeri
+          </Link>
+          <Link href="/#testimoni" className="font-headline tracking-tight text-lg text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-50 transition-all duration-300">
+            Testimoni
+          </Link>
+        </div>
+        <Link
+          href="/#koleksi"
+          className="bg-primary text-on-primary px-6 py-2.5 rounded-xl font-medium transition-all duration-300 hover:bg-primary-container scale-95 active:scale-100"
+        >
+          Pesan Sekarang
+        </Link>
+      </div>
+    </nav>
+  );
+}

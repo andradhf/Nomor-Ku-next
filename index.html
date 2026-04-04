@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>NomorKu - Nomor Rumah Akrilik Premium &amp; Estetik</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#cca730",
+                        "inverse-surface": "#32302a",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#ffe3d1",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "background": "#fff9ef",
+                        "surface-tint": "#805533",
+                        "surface-container-low": "#f9f3ea",
+                        "on-secondary-container": "#4f6c4a",
+                        "surface-variant": "#e7e2d9",
+                        "surface-container-high": "#ede7de",
+                        "on-secondary-fixed-variant": "#324d2f",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#f3ede4",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e7e2d9",
+                        "on-tertiary-container": "#4e3d00",
+                        "secondary": "#496544",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#d5c3b8",
+                        "secondary-container": "#cbecc2",
+                        "primary-fixed": "#ffdcc5",
+                        "tertiary": "#735c00",
+                        "surface-dim": "#dfd9d1",
+                        "on-background": "#1d1b16",
+                        "secondary-fixed": "#cbecc2",
+                        "secondary-fixed-dim": "#b0cfa7",
+                        "primary": "#6f4627",
+                        "on-surface-variant": "#51443c",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#301400",
+                        "on-tertiary-fixed": "#241a00",
+                        "surface": "#fff9ef",
+                        "on-primary-fixed-variant": "#653d1e",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "inverse-on-surface": "#f6f0e7",
+                        "outline": "#83746b",
+                        "surface-bright": "#fff9ef",
+                        "primary-fixed-dim": "#f4bb92",
+                        "error": "#ba1a1a",
+                        "primary-container": "#8b5e3c",
+                        "on-surface": "#1d1b16",
+                        "on-secondary-fixed": "#072107",
+                        "inverse-primary": "#f4bb92",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#ffe088"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Noto Serif"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24
+        }
+
+        .grain-overlay {
+            background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBitW4jHX15qSDwO1xRKk29TOmwF3FQvmmBBZvvczV7V---yDyUPNI_GqCLGlpPooEPWH4goOi-We8W9zztY2GNXK1v4ED6dXDQi3GQVSMkjQOtyhCrCJH2Qqrnlq7RF4-KT048uE9tJzWRBryJZ05GShJ_LIOvwW6YWEIT3JKUhLv_W3TLUwsKy740m58--ruX3Fr4VKf0iI8T5L9_NrMn_UndLrp9o7PgspHS8eLsP4tmhOiifrUoebtw380wtZnNas5jDLtecs4);
+            opacity: 0.03;
+            pointer-events: none
+        }
+
+        .acrylic-blur {
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px)
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-surface font-body selection:bg-primary/20">
+    <div class="fixed inset-0 grain-overlay z-[100]"></div>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-stone-50/70 dark:bg-stone-900/70 backdrop-blur-xl shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a class="font-serif text-2xl font-bold text-stone-900 dark:text-stone-50" href="#">NomorKu</a>
+            <div class="hidden md:flex items-center space-gap-8 gap-8">
+                <a class="font-serif tracking-tight text-lg text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-50 transition-all duration-300"
+                    href="#koleksi">Koleksi</a>
+                <a class="font-serif tracking-tight text-lg text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-50 transition-all duration-300"
+                    href="#harga">Harga</a>
+                <a class="font-serif tracking-tight text-lg text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-50 transition-all duration-300"
+                    href="#cara-pesan">Cara Pesan</a>
+                <a class="font-serif tracking-tight text-lg text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-50 transition-all duration-300"
+                    href="#galeri">Galeri</a>
+                <a class="font-serif tracking-tight text-lg text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-50 transition-all duration-300"
+                    href="#testimoni">Testimoni</a>
+            </div>
+            <a href="https://wa.me/628XXXXXXXXXX" target="_blank" class="bg-primary text-on-primary px-6 py-2.5 rounded-xl font-medium transition-all duration-300 hover:bg-primary-container scale-95 active:scale-100 flex items-center justify-center">Konsultasi Gratis via WA</a>
+        </div>
+    </nav>
+    <div class="bg-tertiary-container text-on-tertiary-container text-sm text-center py-2 z-40 relative mt-[72px] sm:mt-[76px]">
+        🔥 Slot produksi minggu ini tersisa 8 pesanan · Gratis ongkir untuk 10 pembeli pertama bulan Juli
+    </div>
+    <main class="pt-8">
+        <!-- Hero Section -->
+        <section class="relative min-h-[921px] flex items-center overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+                <div class="z-10 order-2 md:order-1">
+                    <p class="text-sm text-on-surface-variant italic mb-3 tracking-wide">
+                            Keindahan di Setiap Ambang Pintu
+                        </p>
+                    <span class="inline-block py-1 px-3 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold tracking-widest uppercase mb-6">Handcrafted Premium Acrylic</span>
+                    <h1 class="font-headline text-5xl md:text-7xl text-on-background leading-tight tracking-tight mb-6">
+                        Sambut Tamu dengan Kesan Pertama yang <span class="text-primary italic">Hangat</span>
+                    </h1>
+                    <p class="text-on-surface-variant text-lg max-w-md mb-10 leading-relaxed">
+                        Tamu yang pertama kali datang akan menilai rumahmu dari nomor pintunya. Pastikan kesan itu berkesan — akrilik premium Grade A, tahan 2 tahun, siap dalam 2–4 hari kerja.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a class="px-8 py-4 bg-primary text-on-primary rounded-xl font-bold shadow-lg shadow-primary/20 hover:translate-y-[-2px] transition-all"
+                            href="#koleksi">Lihat Koleksi</a>
+                        <a class="px-8 py-4 border border-outline-variant text-on-surface rounded-xl font-bold hover:bg-surface-container transition-all"
+                            href="#cara-pesan">Cara Kerja</a>
+                    </div>
+                    <p class="text-sm text-primary font-bold mt-4" id="hero-urgency-badge">
+                        ✅ Pesan hari ini → estimasi selesai <span id="estimasi-selesai"></span>
+                    </p>
+                    <div class="flex flex-wrap gap-x-6 gap-y-2 mt-4 text-xs text-on-surface-variant">
+                        <span>🔒 Pembayaran Aman</span>
+                        <span>📦 Packaging Bubble Wrap</span>
+                        <span>⭐ 500+ Pelanggan Puas</span>
+                        <span>✅ Garansi 2 Tahun</span>
+                    </div>
+                </div>
+                <div class="relative order-1 md:order-2">
+                    <div
+                        class="aspect-square rounded-full bg-surface-container-high absolute -top-10 -right-10 w-full h-full -z-10 blur-3xl opacity-50">
+                    </div>
+                    <img alt="Premium House Number Mockup"
+                        class="rounded-[2rem] shadow-2xl object-cover w-full h-[500px]"
+                        data-alt="close-up of a minimalist black acrylic house number mounted on a warm white textured stone wall with soft afternoon sunlight and shadows"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuB54NO83SbnyeYXc1X-BfkLVnaDIEtIoWMFMCvmtH4zZ-_ZmJux5C7-daoudOL131QGdTmelQ9PMSRoJ3KA1MOuabAiHwNmtMs8RO7RsA49ZdXLXOT4Gr2qOCxtWAur7VXuqIIeIIBLxYgWLgjP-duu1KvayEwsDxtAg5PT01kGaXbP6nCzGhDk45yM2ZrerN0GKziEZgpuKaauG2XHyIVkWF_5G0tbRjHmcMaT4rcwyh_IKVXBQGS5fIkwlbpBEVKmyjRe4_UcyPQ" />
+                </div>
+            </div>
+        </section>
+        <!-- Social Proof -->
+        <section class="py-12 bg-surface-container">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div class="space-y-1">
+                        <p class="text-3xl font-headline font-bold text-primary">500+</p>
+                        <p class="text-sm text-on-surface-variant font-medium">Rumah Terpasang</p>
+                    </div>
+                    <div class="space-y-1">
+                        <p class="text-3xl font-headline font-bold text-primary">4.9/5</p>
+                        <p class="text-sm text-on-surface-variant font-medium">Rating Pelanggan</p>
+                    </div>
+                    <div class="space-y-1">
+                        <p class="text-3xl font-headline font-bold text-primary">2 Thn</p>
+                        <p class="text-sm text-on-surface-variant font-medium">Garansi Material</p>
+                    </div>
+                    <div class="space-y-1">
+                        <p class="text-3xl font-headline font-bold text-primary">100%</p>
+                        <p class="text-sm text-on-surface-variant font-medium">Custom Design</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Product Showcase -->
+        <section class="py-24" id="koleksi">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                    <div>
+                        <h2 class="font-headline text-4xl text-on-surface mb-4">Pilih Karakter Rumahmu</h2>
+                        <p class="text-on-surface-variant max-w-lg">Koleksi desain kurasi kami yang dirancang untuk menyatu sempurna dengan berbagai gaya arsitektur.</p>
+                        <a href="#previewer-section" class="inline-flex items-center gap-2 text-sm text-primary font-medium hover:underline mt-2">
+                            <span class="material-symbols-outlined text-base">preview</span>
+                            Coba preview desain nomor rumahmu langsung di sini →
+                        </a>
+                    </div>
+                    <a class="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all" href="#">
+                        Lihat Semua Koleksi <span class="material-symbols-outlined">arrow_forward</span>
+                    </a>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Product Card 1 -->
+                    <div
+                        class="group bg-surface-container-low p-4 rounded-[1.5rem] hover:bg-surface-bright transition-all duration-500">
+                        <div class="overflow-hidden rounded-xl mb-6 aspect-[4/5]">
+                            <img alt="Rustic Oak Design"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                data-alt="Modern house number design with dark oak wood texture backing and brushed copper metallic digits mounted on a contemporary exterior"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmF7G7d6ckmPTmCKizmFtNi3H3ANU0m3mJSnSZkoruqWDOP0EqL2CRcTj3-ZzHmJpdSsRhRFT8ZMFvipi0qOqCCnrEWLHIy1EXIhgvSwnLkpJ_HOYorfvg70OcsdM9XEPjSvVnJIsv3xenHti0OgiahigZ-GcWjRn2U1qRinXWTAPVN8wnDnXC35rRFGYuCPw17d-H3UmfXMTqAuoo382hBpuFEpHBUMTumZMQnRau3I6e02tjh3vhqP-e_qOT3OtYORzAfj69Pjo" />
+                        </div>
+                        <h3 class="font-headline text-xl mb-2 px-2">Rustic Oak</h3>
+                        <p class="text-sm text-on-surface-variant mb-2 px-2">Favorit untuk rumah tropis & Japandi. Aura hangat yang tak lekang tren.</p>
+                        <p class="text-xs text-on-surface-variant px-2 mb-3">
+                            Mulai dari <span class="font-bold text-primary">Rp 95.000</span>
+                        </p>
+                        <button
+                            class="w-full py-3 bg-secondary-container text-on-secondary-container rounded-xl font-bold group-hover:bg-primary group-hover:text-on-primary transition-colors">Pilih
+                            Desain</button>
+                    </div>
+                    <!-- Product Card 2 -->
+                    <div
+                        class="group bg-surface-container-low p-4 rounded-[1.5rem] hover:bg-surface-bright transition-all duration-500">
+                        <div class="overflow-hidden rounded-xl mb-6 aspect-[4/5]">
+                            <img alt="Modern Matte Design"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                data-alt="Minimalist matte black acrylic house number plate with white precision-cut numbers against a light grey industrial concrete wall"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWYlZxL6gsvqcrGBjIDjUbGbJiwjekKUP2DEMyRyiYchdkFhqB2zW5ex3i1HRM8E5lV498lqAI0FLKz0yhjWOTqcpkpELEuirg1dB4FIYCNOVYx8470cFSGFBE-OpU8O2bgVEDsDzAIB3X9snOzSQPWFdGs7oMbsQxlER3vXRkzr_Li3i1kymG7lnkjL59GFn0YcRDyUAtBpaLOZQ96VeFTAcyX3CVxJvCVQcQSOn_bBEAin6f6V_OHPUM0jutjfQQ18flh7bmhOc" />
+                        </div>
+                        <h3 class="font-headline text-xl mb-2 px-2">Modern Matte</h3>
+                        <p class="text-sm text-on-surface-variant mb-2 px-2">Pilihan #1 untuk cluster perumahan modern. Bersih, tegas, premium.</p>
+                        <p class="text-xs text-on-surface-variant px-2 mb-3">
+                            Mulai dari <span class="font-bold text-primary">Rp 75.000</span>
+                        </p>
+                        <button
+                            class="w-full py-3 bg-secondary-container text-on-secondary-container rounded-xl font-bold group-hover:bg-primary group-hover:text-on-primary transition-colors">Pilih
+                            Desain</button>
+                    </div>
+                    <!-- Product Card 3 -->
+                    <div
+                        class="group bg-surface-container-low p-4 rounded-[1.5rem] hover:bg-surface-bright transition-all duration-500">
+                        <div class="overflow-hidden rounded-xl mb-6 aspect-[4/5]">
+                            <img alt="Golden Classic Design"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                data-alt="Luxury gold metallic house number on clear acrylic base reflecting sunset light, mounted on a cream brick wall"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQwy5-iXDcjFHWZPPize429lILBp4GEPfleHFJPgyQgFMXK7TKkCKo_z84GIjbqwsv2fAsc_eXR5jV3eDSyL4q-3l3eWtit77ecdPbRcbkTkgJgVv2p8WqYrj5Ie_RCzYWXmu7gUx4AZSWq6ulUqRwkWVwqZBmMWr1qCA3CTb3XUWALI-zRUamnst0sR4ppVKeV0SGcCc5Vc8YsbijxkWSQHLNY4jZ_9F_cOdhaMwlgoOxfEes81arNgZlAKg1csix6HEVv6nz-IA" />
+                        </div>
+                        <h3 class="font-headline text-xl mb-2 px-2">Golden Classic</h3>
+                        <p class="text-sm text-on-surface-variant mb-2 px-2">Kesan mewah pertama sebelum tamu masuk. Cocok untuk hunian bergaya klasik & mediterania.</p>
+                        <p class="text-xs text-on-surface-variant px-2 mb-3">
+                            Mulai dari <span class="font-bold text-primary">Rp 130.000</span>
+                        </p>
+                        <button
+                            class="w-full py-3 bg-secondary-container text-on-secondary-container rounded-xl font-bold group-hover:bg-primary group-hover:text-on-primary transition-colors">Pilih
+                            Desain</button>
+                    </div>
+                    <!-- Product Card 4 -->
+                    <div
+                        class="group bg-surface-container-low p-4 rounded-[1.5rem] hover:bg-surface-bright transition-all duration-500">
+                        <div class="overflow-hidden rounded-xl mb-6 aspect-[4/5]">
+                            <img alt="Sage Garden Design"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                data-alt="Earth-toned sage green acrylic house number sign with thin white modern sans-serif typography surrounded by lush green ivy"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1UNvhPdcDhsKMoaSLvuvlp0YtWSPr4QDRYlgTohPf4E4kyUvtuExAb4yitK6I5iGsls3JcKHVr0x07Czxqu8QaIabNPFOMpjW-XT5pJC26QN99xaJ2woc6EUDfgUrO_Kt40CEA83ZNHmaL1bUTsD3zX0DCZKz2Q2TXI5aSIs0gU-pAbJz27nBWnZ8H7clz2uf8gza5pmbWJQ3faHZhMVN7_r2PzRMuyoGZK_lA2fVP_DFjAVzLr573N9iKYp1bZZFUIDQIUrJSnk" />
+                        </div>
+                        <h3 class="font-headline text-xl mb-2 px-2">Sage Garden</h3>
+                        <p class="text-sm text-on-surface-variant mb-2 px-2">Menyatu sempurna dengan tanaman hijau & batu alam. Paling diminati untuk rumah gaya biophilic.</p>
+                        <p class="text-xs text-on-surface-variant px-2 mb-3">
+                            Mulai dari <span class="font-bold text-primary">Rp 85.000</span>
+                        </p>
+                        <button
+                            class="w-full py-3 bg-secondary-container text-on-secondary-container rounded-xl font-bold group-hover:bg-primary group-hover:text-on-primary transition-colors">Pilih
+                            Desain</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Pricing Section -->
+        <section class="py-24" id="harga">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="font-headline text-4xl mb-4">Investasi untuk Kesan Pertama</h2>
+                    <p class="text-on-surface-variant max-w-xl mx-auto">Pilih paket yang sesuai dengan kebutuhan dan ukuran fasad rumah Anda. Semua paket menggunakan akrilik premium Grade A.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                    <!-- Starter -->
+                    <div class="bg-surface-container-low p-8 rounded-[2rem] border border-outline-variant/30 hover:border-primary/50 transition-all">
+                        <h3 class="font-headline text-2xl font-bold mb-2">Paket Starter</h3>
+                        <p class="text-sm text-on-surface-variant mb-6">Cocok untuk nomor rumah simpel dan bersih.</p>
+                        <div class="mb-8">
+                            <span class="text-sm text-on-surface-variant">Mulai</span>
+                            <div class="text-4xl font-headline font-bold text-primary mt-1">Rp 75.000</div>
+                        </div>
+                        <ul class="space-y-4 mb-8 text-sm">
+                            <li class="flex gap-3"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Akrilik 3mm Grade A</li>
+                            <li class="flex gap-3"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> 1 baris teks (nomor saja)</li>
+                            <li class="flex gap-3"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Ukuran hingga 20×8 cm</li>
+                            <li class="flex gap-3"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Tersedia 3 pilihan warna</li>
+                            <li class="flex gap-3"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Termasuk baut pen / 3M VHB</li>
+                        </ul>
+                        <a href="https://wa.me/628XXXXXXXXXX" target="_blank" class="block w-full py-3 text-center border-2 border-primary text-primary rounded-xl font-bold hover:bg-primary hover:text-on-primary transition-colors">Pesan Sekarang</a>
+                    </div>
+                    <!-- Standard (Terpopuler) -->
+                    <div class="bg-primary text-on-primary p-8 rounded-[2rem] shadow-xl relative scale-100 md:scale-105 z-10 border-4 border-primary-container">
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-tertiary text-on-tertiary px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase shadow-md">Terpopuler</div>
+                        <h3 class="font-headline text-2xl font-bold mb-2">Paket Standard</h3>
+                        <p class="text-sm text-on-primary-container mb-6 opacity-90">Pilihan terbanyak — nomor + nama jalan, tampil elegan.</p>
+                        <div class="mb-8">
+                            <span class="text-sm text-on-primary-container opacity-90">Mulai</span>
+                            <div class="text-4xl font-headline font-bold mt-1">Rp 120.000</div>
+                        </div>
+                        <ul class="space-y-4 mb-8 text-sm">
+                            <li class="flex gap-3"><span class="material-symbols-outlined text-tertiary text-sm">check_circle</span> Akrilik 5mm Grade A</li>
+                            <li class="flex gap-3"><span class="material-symbols-outlined text-tertiary text-sm">check_circle</span> 2 baris teks (nomor + nama jalan)</li>
+                            <li class="flex gap-3"><span class="material-symbols-outlined text-tertiary text-sm">check_circle</span> Ukuran hingga 30×12 cm</li>
+                            <li class="flex gap-3"><span class="material-symbols-outlined text-tertiary text-sm">check_circle</span> Semua pilihan warna & font</li>
+                            <li class="flex gap-3"><span class="material-symbols-outlined text-tertiary text-sm">check_circle</span> Termasuk baut pen / 3M VHB</li>
+                            <li class="flex gap-3"><span class="material-symbols-outlined text-tertiary text-sm">check_circle</span> Preview desain sebelum produksi</li>
+                        </ul>
+                        <a href="https://wa.me/628XXXXXXXXXX" target="_blank" class="block w-full py-3 text-center bg-tertiary text-on-tertiary rounded-xl font-bold hover:bg-tertiary-container transition-colors shadow-lg">Pesan Sekarang</a>
+                    </div>
+                    <!-- Premium -->
+                    <div class="bg-surface-container-low p-8 rounded-[2rem] border border-outline-variant/30 hover:border-primary/50 transition-all">
+                        <h3 class="font-headline text-2xl font-bold mb-2">Paket Premium</h3>
+                        <p class="text-sm text-on-surface-variant mb-6">Full custom — ukuran, font, warna & finishing impian.</p>
+                        <div class="mb-8">
+                            <span class="text-sm text-on-surface-variant">Mulai</span>
+                            <div class="text-4xl font-headline font-bold text-primary mt-1">Rp 200.000</div>
+                        </div>
+                        <ul class="space-y-4 mb-8 text-sm">
+                            <li class="flex gap-3"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Akrilik 5mm Grade A</li>
+                            <li class="flex gap-3"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Full custom teks & layout</li>
+                            <li class="flex gap-3"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Ukuran bebas (maks 60×20 cm)</li>
+                            <li class="flex gap-3"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Semua pilihan warna & font</li>
+                            <li class="flex gap-3"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Backing list kayu/stainless (ops)</li>
+                            <li class="flex gap-3"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Preview & Prioritas antrian</li>
+                        </ul>
+                        <a href="https://wa.me/628XXXXXXXXXX" target="_blank" class="block w-full py-3 text-center border-2 border-primary text-primary rounded-xl font-bold hover:bg-primary hover:text-on-primary transition-colors">Pesan Sekarang</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="py-24 bg-surface-container-low" id="cara-pesan">
+            <div class="max-w-7xl mx-auto px-6 text-center">
+                <h2 class="font-headline text-4xl mb-16">Langkah Mudah Memiliki NomorKu</h2>
+                <div class="relative flex flex-col md:flex-row justify-between items-center md:items-start gap-12">
+                    <!-- Connector line -->
+                    <div class="hidden md:block absolute top-12 left-0 w-full h-[1px] bg-outline-variant z-0"></div>
+                    <div class="relative z-10 flex flex-col items-center max-w-[200px]">
+                        <div
+                            class="w-24 h-24 bg-surface-container-lowest rounded-full border-4 border-surface shadow-md flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-primary text-4xl">palette</span>
+                        </div>
+                        <h4 class="font-bold mb-2">Pilih Desain</h4>
+                        <p class="text-sm text-on-surface-variant">Pilih dari 4 koleksi kurasi kami, atau gunakan Acrylic Previewer untuk lihat tampilan sebelum pesan.</p>
+                    </div>
+                    <div class="relative z-10 flex flex-col items-center max-w-[200px]">
+                        <div
+                            class="w-24 h-24 bg-surface-container-lowest rounded-full border-4 border-surface shadow-md flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-primary text-4xl">edit_note</span>
+                        </div>
+                        <h4 class="font-bold mb-2">Isi Data</h4>
+                        <p class="text-sm text-on-surface-variant">Kirim nomor rumah, nama jalan, dan preferensi warna via WhatsApp. Tim kami membalas dalam 1 jam.</p>
+                    </div>
+                    <div class="relative z-10 flex flex-col items-center max-w-[200px]">
+                        <div
+                            class="w-24 h-24 bg-surface-container-lowest rounded-full border-4 border-surface shadow-md flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-primary text-4xl">precision_manufacturing</span>
+                        </div>
+                        <h4 class="font-bold mb-2">Produksi</h4>
+                        <p class="text-sm text-on-surface-variant">Produksi laser cut presisi dengan akrilik Grade A. Kamu menerima foto preview sebelum produk dikirim.</p>
+                    </div>
+                    <div class="relative z-10 flex flex-col items-center max-w-[200px]">
+                        <div
+                            class="w-24 h-24 bg-surface-container-lowest rounded-full border-4 border-surface shadow-md flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-primary text-4xl">local_shipping</span>
+                        </div>
+                        <h4 class="font-bold mb-2">Pengiriman</h4>
+                        <p class="text-sm text-on-surface-variant">Dikemas bubble wrap + kardus custom, dikirim via ekspedisi terpercaya ke seluruh Indonesia.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Customization Preview -->
+        <section class="py-24 overflow-hidden" id="previewer-section">
+            <div class="max-w-7xl mx-auto px-6">
+                <div
+                    class="bg-surface-container p-8 md:p-16 rounded-[3rem] shadow-sm flex flex-col lg:flex-row gap-16 items-center">
+                    <div class="lg:w-1/2">
+                        <h2 class="font-headline text-4xl mb-6">Visualisasikan Kreasi Anda</h2>
+                        <p class="text-on-surface-variant mb-10">Gunakan Acrylic Previewer kami untuk melihat bagaimana
+                            nomor rumah Anda tampil dalam berbagai pilihan font dan material.</p>
+                        <div class="space-y-8">
+                            <div>
+                                <label class="block text-sm font-bold uppercase tracking-wider mb-4">Pilih Font</label>
+                                <div class="flex gap-4">
+                                    <button
+                                        class="flex-1 py-3 border border-outline bg-surface rounded-lg hover:bg-surface-variant transition-all font-headline"
+                                        onclick="changeFont('font-headline')">Serif</button>
+                                    <button
+                                        class="flex-1 py-3 border border-outline bg-surface rounded-lg hover:bg-surface-variant transition-all font-body"
+                                        onclick="changeFont('font-body')">Modern</button>
+                                    <button
+                                        class="flex-1 py-3 border border-outline bg-surface rounded-lg hover:bg-surface-variant transition-all italic font-serif"
+                                        onclick="changeFont('italic font-headline')">Script</button>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold uppercase tracking-wider mb-4">Pilih Warna</label>
+                                <div class="flex gap-4">
+                                    <button
+                                        class="w-10 h-10 rounded-full bg-stone-900 ring-2 ring-offset-2 ring-transparent active:ring-primary"
+                                        onclick="changeColor('bg-stone-900', 'text-stone-100')"></button>
+                                    <button
+                                        class="w-10 h-10 rounded-full bg-primary ring-2 ring-offset-2 ring-transparent active:ring-primary"
+                                        onclick="changeColor('bg-primary', 'text-white')"></button>
+                                    <button
+                                        class="w-10 h-10 rounded-full bg-secondary ring-2 ring-offset-2 ring-transparent active:ring-primary"
+                                        onclick="changeColor('bg-secondary', 'text-white')"></button>
+                                    <button
+                                        class="w-10 h-10 rounded-full bg-tertiary-fixed ring-2 ring-offset-2 ring-transparent active:ring-primary"
+                                        onclick="changeColor('bg-tertiary-fixed', 'text-on-tertiary-fixed')"></button>
+                                    <button
+                                        class="w-10 h-10 rounded-full bg-white border border-outline-variant ring-2 ring-offset-2 ring-transparent active:ring-primary"
+                                        onclick="changeColor('bg-white', 'text-on-background')"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 w-full flex justify-center">
+                        <div class="w-full max-w-[400px] aspect-video bg-stone-900 flex flex-col items-center justify-center rounded-2xl shadow-2xl transition-all duration-500 relative"
+                            id="preview-plate">
+                            <div class="absolute inset-0 acrylic-blur rounded-2xl opacity-10"></div>
+                            <span class="text-7xl font-headline text-stone-100 relative z-10" id="preview-number">No.
+                                12</span>
+                            <span class="text-xl font-body text-stone-300 relative z-10 tracking-widest uppercase mt-2"
+                                id="preview-text">Graha Asri</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Testimonials -->
+        <section class="py-24 bg-surface-container-low" id="testimoni">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="font-headline text-4xl mb-4">Cerita dari Pemilik Rumah</h2>
+                    <p class="text-on-surface-variant">Kebahagiaan terkecil dimulai dari saat melangkah masuk ke rumah.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-surface-bright p-8 rounded-2xl shadow-sm border border-outline-variant/10">
+                        <div class="flex gap-1 text-tertiary mb-6">
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                        </div>
+                        <p class="italic text-on-surface-variant mb-8 leading-relaxed">"Hasilnya luar biasa rapi. Sangat
+                            cocok dengan konsep rumah industrial saya. CS-nya juga sabar banget bantu revisi desain
+                            berkali-kali."</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full overflow-hidden">
+                                <img alt="Avatar"
+                                    data-alt="Portrait of a smiling woman in a warm home setting, soft natural lighting"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQYACpFzOgZGi0jTeGAoK0Jh4Hu6ZT4p44pUo18AF-MsiHrsJzEjxN2vkECr-zfxM60war1Daas_9tCQbI2T8KpiQyowf3XmK4I1Iz2ircNXZEXu3b3O15u9v-g5_mtOwDygcZpGd_q19ux_h3QLZX6pT_SYW7yyNYVmtfAYMvSbM-r9MUw468xUoYwfRuarBby_JIGyAaH4gE-BhUnkT4aByslIy-3ayygdMZAWm0VcUdr051wQmUKPFelYG7mPG-Ff5KZv4kc8c" />
+                            </div>
+                            <div>
+                                <p class="font-bold text-on-surface">Arini Wijaya</p>
+                                <p class="text-xs text-on-surface-variant">Bekasi</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-surface-bright p-8 rounded-2xl shadow-sm border border-outline-variant/10">
+                        <div class="flex gap-1 text-tertiary mb-6">
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                        </div>
+                        <p class="italic text-on-surface-variant mb-8 leading-relaxed">"Material akriliknya tebal dan
+                            premium. Sudah kena panas hujan 6 bulan tetap kinclong. Bikin rumah kelihatan lebih
+                            'berkelas' seketika."</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full overflow-hidden">
+                                <img alt="Avatar"
+                                    data-alt="Portrait of a middle-aged man with a professional look, indoor architectural studio background"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8DSu9pOIGazlylyhnGuynGQH9-yj16-Wm8er3Jag4Jxm_GAoPe9rhhU7AaaPCQpL-EiqU-k4RWBmnU2qsO0blDWxTzqsNjcpF0JOAIwiM2D63ALKX7U2Zyv2lGi_5vKgwioDlZIbxVKAdZ0jy8I4XVEeLm7kAELgIJ1mYZ0lgBuQLQ-zXqsRFFnNGqa3Fj3pIgolSICi1wTEZwOs0AW_V3Q3c8mqu3CsaSB1MkKPZgbmfUAleJmiCmp4rdl6Jx9gMXhN6tdl21uo" />
+                            </div>
+                            <div>
+                                <p class="font-bold text-on-surface">Budi Santoso</p>
+                                <p class="text-xs text-on-surface-variant">Tangerang Selatan</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-surface-bright p-8 rounded-2xl shadow-sm border border-outline-variant/10">
+                        <div class="flex gap-1 text-tertiary mb-6">
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                        </div>
+                        <p class="italic text-on-surface-variant mb-8 leading-relaxed">"Suka banget sama model Sage
+                            Garden-nya. Packaging aman, pengiriman cepat. Gak nyesel beli di NomorKu!"</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full overflow-hidden">
+                                <img alt="Avatar"
+                                    data-alt="Portrait of a young couple smiling warmly together, garden background"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR-CFqKhjlZbaIaXHoR1qqBQ6MIobfYladq5nvUqESrfAEahC4I7ZJ61AwRW45jon_pCUTBf6Y6BY7v-GC2ogRhmmf576qHXP4NykaXZFKOpi6LQR9yLRmUf6vosrQ8u2Jozw0s9o2UPvrjEwaUJWcy6AdzMs_BD_N35S9-Xd0XCZwVkEoHDiXvv9hnd4os5ehZr7062WKJSShUj10Eq_6Sxc4ZQ3YzmpS_Txw0mJh3x_iPMlJNnQnj-56Tx0Tk7WA2bu2GJ85j9o" />
+                            </div>
+                            <div>
+                                <p class="font-bold text-on-surface">Keluarga Pratama</p>
+                                <p class="text-xs text-on-surface-variant">Yogyakarta</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- FAQ -->
+        <section class="py-24">
+            <div class="max-w-3xl mx-auto px-6">
+                <h2 class="font-headline text-4xl mb-12 text-center">Sering Ditanyakan</h2>
+                <div class="space-y-4">
+                    <details
+                        class="group bg-surface-container rounded-2xl overflow-hidden [&amp;_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex justify-between items-center p-6 cursor-pointer select-none">
+                            <h3 class="font-bold">Apa material yang digunakan?</h3>
+                            <span
+                                class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+                        </summary>
+                        <div class="px-6 pb-6 text-on-surface-variant">
+                            Kami menggunakan Akrilik Marga Cipta (Grade A) dengan ketebalan 3mm - 5mm tergantung desain.
+                            Tahan cuaca ekstrem, tidak mudah pudar, dan tahan karat.
+                        </div>
+                    </details>
+                    <details
+                        class="group bg-surface-container rounded-2xl overflow-hidden [&amp;_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex justify-between items-center p-6 cursor-pointer select-none">
+                            <h3 class="font-bold">Berapa lama proses pengerjaannya?</h3>
+                            <span
+                                class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+                        </summary>
+                        <div class="px-6 pb-6 text-on-surface-variant">
+                            Normal pengerjaan memakan waktu 2-4 hari kerja setelah desain disetujui oleh Anda. Kami
+                            mengutamakan ketelitian dan finishing yang halus.
+                        </div>
+                    </details>
+                    <details
+                        class="group bg-surface-container rounded-2xl overflow-hidden [&amp;_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex justify-between items-center p-6 cursor-pointer select-none">
+                            <h3 class="font-bold">Bagaimana cara pemasangannya?</h3>
+                            <span
+                                class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+                        </summary>
+                        <div class="px-6 pb-6 text-on-surface-variant">
+                            Sangat mudah! Setiap pembelian sudah termasuk baut pen (glass pin) atau perekat 3M VHB Original tergantung pilihan Anda. Kami juga menyertakan panduan pemasangan.
+                        </div>
+                    </details>
+                    <details
+                        class="group bg-surface-container rounded-2xl overflow-hidden [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex justify-between items-center p-6 cursor-pointer select-none">
+                            <h3 class="font-bold">Apakah bisa kirim ke luar kota?</h3>
+                            <span
+                                class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+                        </summary>
+                        <div class="px-6 pb-6 text-on-surface-variant">
+                            Bisa! Kami melayani pengiriman ke seluruh Indonesia via JNE, J&T, dan SiCepat. Setiap produk dikemas dengan bubble wrap dan kardus khusus untuk memastikan tidak ada kerusakan selama pengiriman. Estimasi ongkir dihitung otomatis saat Anda konfirmasi pesanan.
+                        </div>
+                    </details>
+                    <details
+                        class="group bg-surface-container rounded-2xl overflow-hidden [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex justify-between items-center p-6 cursor-pointer select-none">
+                            <h3 class="font-bold">Apa perbedaan akrilik 3mm dan 5mm?</h3>
+                            <span
+                                class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+                        </summary>
+                        <div class="px-6 pb-6 text-on-surface-variant">
+                            Akrilik 3mm cocok untuk ukuran kecil hingga sedang (maks 25×10 cm) dan lebih ringan. Akrilik 5mm memberikan kesan lebih solid, berat, dan premium — direkomendasikan untuk ukuran besar atau yang dipasang di area yang mudah terlihat. Paket Standard dan Premium menggunakan 5mm.
+                        </div>
+                    </details>
+                    <details
+                        class="group bg-surface-container rounded-2xl overflow-hidden [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex justify-between items-center p-6 cursor-pointer select-none">
+                            <h3 class="font-bold">Bagaimana jika produk rusak atau salah saat tiba?</h3>
+                            <span
+                                class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+                        </summary>
+                        <div class="px-6 pb-6 text-on-surface-variant">
+                            Kami menanggung penuh jika ada kesalahan dari pihak kami (salah nomor, salah warna sesuai konfirmasi, atau cacat produksi). Cukup foto produk dan kirim ke WhatsApp kami dalam 2×24 jam setelah barang diterima, dan kami akan proses ulang tanpa biaya tambahan.
+                        </div>
+                    </details>
+
+                </div>
+            </div>
+        </section>
+        <!-- Final CTA -->
+        <section class="py-24 bg-primary text-on-primary overflow-hidden relative">
+            <div class="absolute inset-0 opacity-10">
+                <img alt="Pattern Background" class="w-full h-full object-cover"
+                    data-alt="abstract close-up of copper metallic texture with soft reflections and grain"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoKhVtipHso0k3R6E-fMtygfrN_vgZGTeiS1YXmUeGkG6xhmiKDkgiIV3HaW-sHwTJYwOGTp7WwpDpfBUSkhxTq8AlKabMvtryen9M76CM2kBHDO3kBt713xHAic0gIRf2nHQntS5MkP_wXbjlQEX5XEJvivlOfb3FcdDG85KX58q2JL6NObJ3nBYtAkSwIgXJWB_vq-VT_gxg_yjiof-IPK4U7AiikEkB0oNnDGuJlc-fEf0cJNoK7ZvG2Mni7ys9e-UIOb5Vd-4" />
+            </div>
+            <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+                <h2 class="font-headline text-4xl md:text-6xl mb-8 leading-tight">Rumahmu Berhak Punya<br />Identitas
+                    yang Spesial</h2>
+                <p class="text-on-primary-container text-lg mb-12 max-w-2xl mx-auto">Mulai rancang nomor rumah impianmu
+                    hari ini dan rasakan kebanggaan setiap kali tiba di rumah.</p>
+                <button
+                    class="px-12 py-5 bg-tertiary text-on-tertiary rounded-full font-bold text-xl hover:bg-tertiary-container hover:scale-105 transition-all shadow-xl">Mulai
+                    Desain Sekarang</button>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer
+        class="w-full py-12 px-8 bg-stone-100 dark:bg-stone-950 border-t border-stone-200/30 dark:border-stone-800/30">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-center md:text-left">
+            <div class="space-y-4">
+                <p class="font-serif text-xl font-semibold text-stone-800 dark:text-stone-200">NomorKu</p>
+                <p class="text-stone-700 dark:text-stone-300 font-sans text-sm tracking-wide leading-relaxed">
+                    Menghadirkan keindahan dan detail presisi untuk setiap hunian. Estetika yang tak lekang oleh waktu.
+                </p>
+            </div>
+            <div class="space-y-4">
+                <p class="font-bold text-stone-900 dark:text-stone-50">Navigasi</p>
+                <ul class="space-y-2 text-stone-500 dark:text-stone-400 font-sans text-sm">
+                    <li><a class="hover:text-stone-800 dark:hover:text-stone-200 underline underline-offset-4 transition-opacity"
+                            href="#">Beranda</a></li>
+                    <li><a class="hover:text-stone-800 dark:hover:text-stone-200 underline underline-offset-4 transition-opacity"
+                            href="#koleksi">Produk</a></li>
+                    <li><a class="hover:text-stone-800 dark:hover:text-stone-200 underline underline-offset-4 transition-opacity"
+                            href="#galeri">Galeri</a></li>
+                    <li><a class="hover:text-stone-800 dark:hover:text-stone-200 underline underline-offset-4 transition-opacity"
+                            href="#cara-pesan">Cara Order</a></li>
+                </ul>
+            </div>
+            <div class="space-y-4">
+                <p class="font-bold text-stone-900 dark:text-stone-50">Bantuan</p>
+                <ul class="space-y-2 text-stone-500 dark:text-stone-400 font-sans text-sm">
+                    <li><a class="hover:text-stone-800 dark:hover:text-stone-200 underline underline-offset-4 transition-opacity"
+                            href="#">Kebijakan Privasi</a></li>
+                    <li><a class="hover:text-stone-800 dark:hover:text-stone-200 underline underline-offset-4 transition-opacity"
+                            href="#">Syarat &amp; Ketentuan</a></li>
+                    <li><a class="hover:text-stone-800 dark:hover:text-stone-200 underline underline-offset-4 transition-opacity"
+                            href="#">FAQ</a></li>
+                    <li><a class="hover:text-stone-800 dark:hover:text-stone-200 underline underline-offset-4 transition-opacity"
+                            href="#">Hubungi Kami</a></li>
+                </ul>
+            </div>
+            <div class="space-y-4">
+                <p class="font-bold text-stone-900 dark:text-stone-50">Ikuti Kami</p>
+                <div class="flex justify-center md:justify-start gap-4">
+                    <a class="w-10 h-10 rounded-full bg-stone-200 dark:bg-stone-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"
+                        href="#">
+                        <span class="material-symbols-outlined text-sm">camera</span>
+                    </a>
+                    <a class="w-10 h-10 rounded-full bg-stone-200 dark:bg-stone-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"
+                        href="#">
+                        <span class="material-symbols-outlined text-sm">chat_bubble</span>
+                    </a>
+                    <a class="w-10 h-10 rounded-full bg-stone-200 dark:bg-stone-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"
+                        href="#">
+                        <span class="material-symbols-outlined text-sm">mail</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-stone-200/30 dark:border-stone-800/30 text-center">
+            <p class="text-stone-500 dark:text-stone-400 font-sans text-sm">© 2024 NomorKu. Keindahan di Setiap Ambang
+                Pintu.</p>
+        </div>
+    </footer>
+    <script>
+        function changeFont(fontClass) {
+            const num = document.getElementById('preview-number');
+            const txt = document.getElementById('preview-text');
+            num.className = `text-7xl ${fontClass} relative z-10 transition-all duration-300`;
+            txt.className = `text-xl ${fontClass.includes('body') ? 'font-body' : 'font-headline'} relative z-10 tracking-widest uppercase mt-2 transition-all duration-300`;
+        }
+
+        function changeColor(bgColor, textColor) {
+            const plate = document.getElementById('preview-plate');
+            const num = document.getElementById('preview-number');
+            const txt = document.getElementById('preview-text');
+
+            // Remove previous color classes
+            plate.className = plate.className.replace(/bg-\S+/g, '');
+            num.className = num.className.replace(/text-\S+/g, '');
+            txt.className = txt.className.replace(/text-\S+/g, '');
+
+            // Add new ones
+            plate.classList.add(bgColor);
+            num.classList.add(textColor);
+
+            // Determine secondary text color based on main text
+            if (textColor === 'text-white' || textColor === 'text-stone-100') {
+                txt.classList.add('text-stone-300');
+            } else if (textColor === 'text-on-tertiary-fixed') {
+                txt.classList.add('text-on-tertiary-fixed-variant');
+            } else {
+                txt.classList.add('text-stone-500');
+            }
+        }
+    </script>
+
+    <!-- WA Floating Button -->
+    <a href="https://wa.me/628XXXXXXXXXX" target="_blank"
+        class="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-[#25D366] text-white px-4 py-3 rounded-full shadow-lg hover:scale-105 transition-all">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+        <span class="text-sm font-medium hidden sm:block">Chat langsung · Balas dalam 1 jam</span>
+    </a>
+
+    <!-- Script Dynamic Date Estimation -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const today = new Date();
+            let daysAdded = 0;
+            let current = new Date(today);
+            
+            // Add 4 working days
+            while (daysAdded < 4) {
+                current.setDate(current.getDate() + 1);
+                // Skip Sunday (0) and Saturday (6)
+                if (current.getDay() !== 0 && current.getDay() !== 6) {
+                    daysAdded++;
+                }
+            }
+            
+            const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+            const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+            
+            const formattedDate = `${days[current.getDay()]}, ${current.getDate()} ${months[current.getMonth()]}`;
+            
+            const estiEl = document.getElementById('estimasi-selesai');
+            if(estiEl) {
+                estiEl.innerText = formattedDate;
+            }
+        });
+    </script>
+</body>
+
+
+</html>
