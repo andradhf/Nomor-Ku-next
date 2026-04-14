@@ -4,16 +4,16 @@ import Link from 'next/link';
 export default function Hero() {
   return (
     <section className="relative min-h-[921px] flex items-center overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl pb-32 mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
         <div className="z-10 order-2 md:order-1">
-          <span className="inline-block py-1 px-3 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold tracking-widest uppercase mb-6">
-            Handcrafted Premium Acrylic
+          <span className="inline-block py-1 px-3 bg-secondary-container text-on-secondary-container rounded-full text-[11px] font-medium tracking-[0.2em] uppercase mb-6">
+            PREMIUM HOUSE NUMBER · AKRILO CREATIONS
           </span>
-          <h1 className="font-headline text-5xl md:text-7xl text-on-background leading-tight tracking-tight mb-6">
+          <h1 className="font-headline text-[40px] md:text-[62px] text-on-background leading-[1.1] tracking-tight mb-6">
             Sambut Tamu dengan Kesan Pertama yang <span className="text-primary italic">Hangat</span>
           </h1>
-          <p className="text-on-surface-variant text-lg max-w-md mb-10 leading-relaxed">
-            Ubah fasad rumah Anda menjadi karya seni minimalis. Nomor rumah custom dengan material premium yang tahan segala cuaca.
+          <p className="text-on-surface-variant/70 text-[15px] md:text-[16px] font-normal max-w-md mb-10 leading-relaxed">
+            Nomor rumah custom dari material akrilik premium. Tahan cuaca, tampil elegan, dan fully customizable.
           </p>
           <div className="flex flex-wrap gap-4">
             <Link href="#koleksi" className="px-8 py-4 bg-primary text-on-primary rounded-xl font-bold shadow-lg shadow-primary/20 hover:translate-y-[-2px] transition-all">

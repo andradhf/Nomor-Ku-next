@@ -8,6 +8,8 @@ import CustomizationPreviewer from '@/components/sections/CustomizationPreviewer
 import Testimonials from '@/components/sections/Testimonials';
 import FAQ from '@/components/sections/FAQ';
 import CTASection from '@/components/sections/CTASection';
+import SectionCategory from '@/components/sections/SectionCategory';
+import AdditionalProducts from '@/components/sections/additionalproducts';
 
 export default function Home() {
   return (
@@ -16,9 +18,10 @@ export default function Home() {
       <main className="pt-20">
         <Hero />
         <SocialProof />
+        <SectionCategory />
         <ProductGrid />
-        <HowItWorks />
-        <CustomizationPreviewer />
+         <HowItWorks />
+        <AdditionalProducts />
         <Testimonials />
         <FAQ />
         <CTASection />

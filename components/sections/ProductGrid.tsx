@@ -45,6 +45,26 @@ export default function ProductGrid() {
     router.push(`/checkout?${searchParams.toString()}`);
   };
 
+  const handleAddToCart = (id: string, title: string, price: string, imageSrc: string) => {
+    // Ambil keranjang lama dari browser
+    const existingCart = JSON.parse(localStorage.getItem('acrylic_cart') || '[]');
+
+    // Ubah format harga ("Rp 150.000" jadi angka 150000)
+    const rawPrice = parseInt(price.replace(/[^0-9]/g, ''));
+
+    // Cek apakah barang sudah ada di keranjang
+    const existingItemIndex = existingCart.findIndex((item: any) => item.title === title);
+
+    if (existingItemIndex >= 0) {
+      existingCart[existingItemIndex].quantity += 1; // Jika ada, tambah jumlahnya
+    } else {
+      existingCart.push({ id, title, price: rawPrice, quantity: 1, imageSrc }); // Jika baru, masukkan
+    }
+
+    // Simpan keranjang baru dan pindah ke checkout
+    localStorage.setItem('acrylic_cart', JSON.stringify(existingCart));
+    router.push('/checkout');
+  };
   return (
     <section className="py-24" id="koleksi">
       <div className="max-w-7xl mx-auto px-6">
@@ -53,7 +73,7 @@ export default function ProductGrid() {
             <h2 className="font-headline text-4xl text-on-surface mb-4">Pilih Karakter Rumahmu</h2>
             <p className="text-on-surface-variant max-w-lg">Koleksi desain kurasi kami yang dirancang untuk menyatu sempurna dengan berbagai gaya arsitektur.</p>
           </div>
-          <Link href="#koleksi" className="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all w-fit">
+          <Link href="/katalog" className="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all w-fit">
             Lihat Semua Koleksi <span className="material-symbols-outlined">arrow_forward</span>
           </Link>
         </div>
@@ -61,7 +81,7 @@ export default function ProductGrid() {
           {products.map((product) => (
             <div key={product.id} className="group bg-surface-container-low p-4 rounded-[1.5rem] hover:bg-surface-bright transition-all duration-500">
               <div className="relative overflow-hidden rounded-xl mb-6 aspect-[4/5] bg-surface-variant">
-                <Image 
+                <Image
                   src={product.imgSrc}
                   alt={`${product.name} Design`}
                   fill
@@ -71,8 +91,13 @@ export default function ProductGrid() {
               </div>
               <h3 className="font-headline text-xl mb-2 px-2">{product.name}</h3>
               <p className="text-sm text-on-surface-variant mb-6 px-2">{product.desc}</p>
-              <button 
-                onClick={() => handleSelectProduct(product.name, product.price)}
+              <button
+                onClick={() => handleAddToCart(
+                  product.id,
+                  product.name,
+                  product.price,
+                  product.imgSrc
+                )}
                 className="w-full py-3 bg-secondary-container text-on-secondary-container rounded-xl font-bold group-hover:bg-primary group-hover:text-on-primary transition-colors"
               >
                 Pilih Desain
