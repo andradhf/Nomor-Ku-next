@@ -4,22 +4,22 @@ import Link from 'next/link';
 
 export default function Header() {
   return (
-    <nav className="fixed top-0 w-full z-50 bg-stone-50/70 dark:bg-stone-900/70 backdrop-blur-xl shadow-sm">
+    <nav className="absolute top-0 w-full z-50 bg-transparent">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <Link href="/" className="font-headline text-2xl font-bold text-stone-900 dark:text-stone-50">
-          NomorKu
+        <Link href="/" className="font-headline text-2xl font-bold text-primary drop-shadow-sm hover:text-on-primary hover:drop-shadow-md transition-all duration-300">
+          Cutting Custom
         </Link>
         <div className="hidden md:flex items-center gap-8">
-          <Link href="/#koleksi" className="font-headline tracking-tight text-lg text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-50 transition-all duration-300">
+          <Link href="/#koleksi" className="font-headline tracking-tight text-lg text-primary drop-shadow-sm hover:text-on-primary hover:drop-shadow-md transition-all duration-300">
             Koleksi
           </Link>
-          <Link href="/#cara-pesan" className="font-headline tracking-tight text-lg text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-50 transition-all duration-300">
+          <Link href="/#cara-pesan" className="font-headline tracking-tight text-lg text-primary drop-shadow-sm hover:text-on-primary hover:drop-shadow-md transition-all duration-300">
             Cara Pesan
           </Link>
-          <Link href="/#galeri" className="font-headline tracking-tight text-lg text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-50 transition-all duration-300">
+          <Link href="/#galeri" className="font-headline tracking-tight text-lg text-primary drop-shadow-sm hover:text-on-primary hover:drop-shadow-md transition-all duration-300">
             Galeri
           </Link>
-          <Link href="/#testimoni" className="font-headline tracking-tight text-lg text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-50 transition-all duration-300">
+          <Link href="/#testimoni" className="font-headline tracking-tight text-lg text-primary drop-shadow-sm hover:text-on-primary hover:drop-shadow-md transition-all duration-300">
             Testimoni
           </Link>
         </div>
@@ -33,3 +33,4 @@ export default function Header() {
     </nav>
   );
 }
+

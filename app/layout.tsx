@@ -68,7 +68,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="bg-background text-on-surface font-body selection:bg-primary/20 min-h-full flex flex-col">
+      <body suppressHydrationWarning className="bg-background text-on-surface font-body selection:bg-primary/20 min-h-full flex flex-col">
         <div className="fixed inset-0 grain-overlay z-[100]"></div>
         {children}
       </body>
