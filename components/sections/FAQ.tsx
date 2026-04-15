@@ -17,7 +17,7 @@ export default function FAQ() {
   return (
     <section className="py-24">
       <div className="max-w-3xl mx-auto px-6">
-        <h2 className="font-headline text-4xl mb-12 text-center">Sering Ditanyakan</h2>
+        <h2 className="font-headline text-4xl mb-12 text-center">Yang Paling Sering Ditanyakan</h2>
         <div className="space-y-4">
           {faqs.map((faq, idx) => (
             <details key={idx} className="group bg-surface-container rounded-2xl overflow-hidden [&_summary::-webkit-details-marker]:hidden">

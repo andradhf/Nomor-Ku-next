@@ -25,7 +25,7 @@ export default function HowItWorks() {
   return (
     <section className="py-24 bg-surface-container-low" id="cara-pesan">
       <div className="max-w-7xl mx-auto px-6 text-center">
-        <h2 className="font-headline text-4xl mb-16">Langkah Mudah Memiliki NomorKu</h2>
+        <h2 className="font-headline text-4xl mb-16">Mulai Pesanan Anda di Sini</h2>
         <div className="relative flex flex-col md:flex-row justify-between items-center md:items-start gap-12">
           {/* Connector line */}
           <div className="hidden md:block absolute top-12 left-0 w-full h-[1px] bg-outline-variant z-0"></div>

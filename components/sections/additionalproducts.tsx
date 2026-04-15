@@ -6,25 +6,25 @@ export default function ProductHighlightCarousel() {
         {
             id: 1,
             title: "Kotak Mahar",
-            description: "Abadikan momen spesial dalam bentuk puzzle akrilik interaktif.",
+            description: "Sentuhan akrilik transparan dan hitam premium untuk tampilan yang lebih estetik dan berkelas.",
             imageSrc: "/images/kotak_mahar.png",
         },
         {
             id: 2,
             title: "Akrilik Custom Lembar (Bening)",
-            description: "Desain neon unik untuk bisnis atau dekorasi kamarmu.",
+            description: "Lembaran Akrilik Bening Custom (2-5mm) – Potong Laser Presisi, Bebas Ukuran, Free Bubble Wrap!",
             imageSrc: "/images/akrilik_custom_bening.png",
         },
         {
             id: 3,
-            title: "Papan Nama ",
-            description: "Dekorasi akrilik custom premium untuk sentuhan personal.",
+            title: "Papan Nama Akrilik LED",
+            description: "Bikin logo dan nama brand kamu tampil makin modern dan profesional dengan Papan Nama Akrilik Custom LED.",
             imageSrc: "/images/papan_nama.png",
         },
         {
             id: 4,
             title: "Akrilik Custom Lembar (Hitam)",
-            description: "Lempengan akrilik presisi untuk identitas hunian kontemporer.",
+            description: "Lembaran Akrilik Hitam Custom (2-5mm) – Potong Laser Presisi, Bebas Ukuran, Free Bubble Wrap!",
             imageSrc: "/images/akrilik_custom_hitam.png",
         }
     ];

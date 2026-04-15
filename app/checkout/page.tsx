@@ -96,14 +96,14 @@ Mohon info untuk proses selanjutnya. Terima kasih!`;
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
-              Kembali Belanja
+              Kembali
             </button>
 
             <h1 className="font-headline text-4xl md:text-5xl text-gray-900 mb-4 text-center md:text-left">
-              Selesaikan <span className="italic text-gray-600">Pesanan Anda</span>
+              Checkout <span className="italic text-gray-600">Now</span>
             </h1>
             <p className="text-gray-500 max-w-2xl text-center md:text-left">
-              Selesaikan pesanan akrilik kustom Anda. Pengrajin kami siap mulai mengerjakan desain pesanan Anda.
+              Satu langkah lagi! Selesaikan pesananmu sekarang dan tim kami siap mewujudkan desain akrilik impianmu jadi nyata.
             </p>
           </div>
 

@@ -28,7 +28,7 @@ export default function MasterpiecesSection() {
 
                 {/* Bagian Header */}
                 <div className="text-center mb-12 space-y-4">
-                    <h2 className="text-[36px] font-bold text-3xl md:text-4xl font-serif text-primary">
+                    <h2 className="text-[24px] text-2xl md:text-4xl font-serif text-primary">
                         CRAFTED FOR YOUR HOME
                     </h2>
 

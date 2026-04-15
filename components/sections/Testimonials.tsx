@@ -30,7 +30,7 @@ export default function Testimonials() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="font-headline text-4xl mb-4">Cerita dari Pemilik Rumah</h2>
-          <p className="text-on-surface-variant">Kebahagiaan terkecil dimulai dari saat melangkah masuk ke rumah.</p>
+          <p className="text-on-surface-variant">Lebih dari sekadar penanda alamat, Inilah ulasan jujur dari pelanggan kami.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, idx) => (

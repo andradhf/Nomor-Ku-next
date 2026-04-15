@@ -20,7 +20,7 @@ export default function Home() {
         <SocialProof />
         <SectionCategory />
         <ProductGrid />
-         <HowItWorks />
+        <HowItWorks />
         <AdditionalProducts />
         <Testimonials />
         <FAQ />
