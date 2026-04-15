@@ -3,35 +3,36 @@
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { catalogData } from '@/app/katalog/page';
 
 const products = [
   {
-    id: 'rustic-oak',
-    name: 'Rustic Oak',
-    desc: 'Sentuhan kayu hangat untuk hunian asri.',
-    price: 'Rp 149.000',
-    imgSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBmF7G7d6ckmPTmCKizmFtNi3H3ANU0m3mJSnSZkoruqWDOP0EqL2CRcTj3-ZzHmJpdSsRhRFT8ZMFvipi0qOqCCnrEWLHIy1EXIhgvSwnLkpJ_HOYorfvg70OcsdM9XEPjSvVnJIsv3xenHti0OgiahigZ-GcWjRn2U1qRinXWTAPVN8wnDnXC35rRFGYuCPw17d-H3UmfXMTqAuoo382hBpuFEpHBUMTumZMQnRau3I6e02tjh3vhqP-e_qOT3OtYORzAfj69Pjo'
+    id: '1',
+    name: 'Nomor Rumah Akrilik (Black Silver)',
+    desc: 'Nomor Rumah Akrilik (Black Silver)',
+    price: 'Rp 150.000',
+    imgSrc: '/images/black_silver_l.png'
   },
   {
     id: 'modern-matte',
     name: 'Modern Matte',
     desc: 'Elegan dalam kesederhanaan monokrom.',
     price: 'Rp 129.000',
-    imgSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBWYlZxL6gsvqcrGBjIDjUbGbJiwjekKUP2DEMyRyiYchdkFhqB2zW5ex3i1HRM8E5lV498lqAI0FLKz0yhjWOTqcpkpELEuirg1dB4FIYCNOVYx8470cFSGFBE-OpU8O2bgVEDsDzAIB3X9snOzSQPWFdGs7oMbsQxlER3vXRkzr_Li3i1kymG7lnkjL59GFn0YcRDyUAtBpaLOZQ96VeFTAcyX3CVxJvCVQcQSOn_bBEAin6f6V_OHPUM0jutjfQQ18flh7bmhOc'
+    imgSrc: '/images/whiteblack_m.png'
   },
   {
     id: 'golden-classic',
     name: 'Golden Classic',
     desc: 'Pancaran kemewahan di setiap ambang pintu.',
     price: 'Rp 169.000',
-    imgSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCQwy5-iXDcjFHWZPPize429lILBp4GEPfleHFJPgyQgFMXK7TKkCKo_z84GIjbqwsv2fAsc_eXR5jV3eDSyL4q-3l3eWtit77ecdPbRcbkTkgJgVv2p8WqYrj5Ie_RCzYWXmu7gUx4AZSWq6ulUqRwkWVwqZBmMWr1qCA3CTb3XUWALI-zRUamnst0sR4ppVKeV0SGcCc5Vc8YsbijxkWSQHLNY4jZ_9F_cOdhaMwlgoOxfEes81arNgZlAKg1csix6HEVv6nz-IA'
+    imgSrc: '/images/nomor_led_l.png'
   },
   {
     id: 'sage-garden',
     name: 'Sage Garden',
     desc: 'Ketenangan alami untuk teras impian.',
     price: 'Rp 139.000',
-    imgSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC1UNvhPdcDhsKMoaSLvuvlp0YtWSPr4QDRYlgTohPf4E4kyUvtuExAb4yitK6I5iGsls3JcKHVr0x07Czxqu8QaIabNPFOMpjW-XT5pJC26QN99xaJ2woc6EUDfgUrO_Kt40CEA83ZNHmaL1bUTsD3zX0DCZKz2Q2TXI5aSIs0gU-pAbJz27nBWnZ8H7clz2uf8gza5pmbWJQ3faHZhMVN7_r2PzRMuyoGZK_lA2fVP_DFjAVzLr573N9iKYp1bZZFUIDQIUrJSnk'
+    imgSrc: '/images/nomor_led_m.png'
   }
 ];
 
@@ -46,24 +47,18 @@ export default function ProductGrid() {
   };
 
   const handleAddToCart = (id: string, title: string, price: string, imageSrc: string) => {
-    // Ambil keranjang lama dari browser
     const existingCart = JSON.parse(localStorage.getItem('acrylic_cart') || '[]');
-
-    // Ubah format harga ("Rp 150.000" jadi angka 150000)
     const rawPrice = parseInt(price.replace(/[^0-9]/g, ''));
-
-    // Cek apakah barang sudah ada di keranjang
     const existingItemIndex = existingCart.findIndex((item: any) => item.title === title);
 
     if (existingItemIndex >= 0) {
-      existingCart[existingItemIndex].quantity += 1; // Jika ada, tambah jumlahnya
+      existingCart[existingItemIndex].quantity += 1;
     } else {
-      existingCart.push({ id, title, price: rawPrice, quantity: 1, imageSrc }); // Jika baru, masukkan
+      existingCart.push({ id, title, price: rawPrice, quantity: 1, imageSrc });
     }
 
-    // Simpan keranjang baru dan pindah ke checkout
-    localStorage.setItem('acrylic_cart', JSON.stringify(existingCart));
-    router.push('/checkout');
+    //localStorage.setItem('acrylic_cart', JSON.stringify(existingCart));
+    router.push('/katalog');
   };
   return (
     <section className="py-24" id="koleksi">
