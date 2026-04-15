@@ -32,22 +32,21 @@ export default function ProductHighlightCarousel() {
     return (
         <section className="py-20 bg-background text-on-background">
             <div className="max-w-7xl mx-auto px-6">
-
                 {/* Bagian Header */}
-                <div className="flex justify-between items-center mb-12">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 md:mb-12 gap-6 md:gap-0">
                     <div>
-                        <h2 className="text-4xl font-serif text-primary tracking-wide">
+                        <h2 className="text-3xl md:text-4xl font-serif text-primary tracking-wide">
                             OUR COLLECTION
                         </h2>
-                        <p className="text-on-surface-variant mt-2">
+                        <p className="text-on-surface-variant mt-2 text-sm md:text-base">
                             Eksplorasi Kreasi Akrilik Terbaik Kami
                         </p>
                     </div>
-                    <Link href="/katalog" className="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all w-fit">
+                    <Link href="/katalog" className="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all w-fit text-sm md:text-base">
                         Lihat Semua Koleksi <span className="material-symbols-outlined">arrow_forward</span>
                     </Link>
                 </div>
-                <div className="grid grid-flow-col auto-cols-[calc(33.33333333%-1.5rem)] gap-8 overflow-x-auto whitespace-nowrap snap-x snap-mandatory py-6">
+                <div className="grid grid-flow-col auto-cols-[100%] md:auto-cols-[calc(50%-1rem)] lg:auto-cols-[calc(33.33333333%-1.5rem)] gap-4 md:gap-8 overflow-x-auto snap-x snap-mandatory py-6">
                     {products.map((item) => (
                         <div
                             key={item.id}
@@ -56,7 +55,7 @@ export default function ProductHighlightCarousel() {
                                 <img
                                     src={item.imageSrc}
                                     alt={item.title}
-                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-90 group-hover:opacity-100"/>
+                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-90 group-hover:opacity-100" />
                             </div>
                             <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur-sm rounded-xl py-4 px-5 shadow-xl text-center z-10 transition-all duration-300">
                                 <p className="text-gray-900 font-semibold text-lg md:text-xl">
