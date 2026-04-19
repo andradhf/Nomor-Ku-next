@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { catalogData } from '@/app/katalog/page';
 
 const products = [
   {
@@ -58,7 +57,7 @@ export default function ProductGrid() {
     }
 
     //localStorage.setItem('acrylic_cart', JSON.stringify(existingCart));
-    router.push('/katalog');
+    router.push('/checkout');
   };
   return (
     <section className="py-24" id="koleksi">
@@ -68,7 +67,7 @@ export default function ProductGrid() {
             <h2 className="font-headline text-4xl text-on-surface mb-4">Pilih Karakter Rumahmu</h2>
             <p className="text-on-surface-variant max-w-lg">Koleksi desain kurasi kami yang dirancang untuk menyatu sempurna dengan berbagai gaya arsitektur.</p>
           </div>
-          <Link href="/katalog" className="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all w-fit">
+          <Link href="/checkout" className="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all w-fit">
             Lihat Semua Koleksi <span className="material-symbols-outlined">arrow_forward</span>
           </Link>
         </div>

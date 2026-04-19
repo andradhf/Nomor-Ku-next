@@ -27,8 +27,8 @@ export default function Hero() {
         <div className="relative order-1 md:order-2 w-full h-[500px]">
           <div className="aspect-square rounded-full bg-surface-container-high absolute -top-10 -right-10 w-full h-full -z-10 blur-3xl opacity-50"></div>
           <div className="relative w-full h-full rounded-[2rem] overflow-hidden shadow-2xl">
-            <Image 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuB54NO83SbnyeYXc1X-BfkLVnaDIEtIoWMFMCvmtH4zZ-_ZmJux5C7-daoudOL131QGdTmelQ9PMSRoJ3KA1MOuabAiHwNmtMs8RO7RsA49ZdXLXOT4Gr2qOCxtWAur7VXuqIIeIIBLxYgWLgjP-duu1KvayEwsDxtAg5PT01kGaXbP6nCzGhDk45yM2ZrerN0GKziEZgpuKaauG2XHyIVkWF_5G0tbRjHmcMaT4rcwyh_IKVXBQGS5fIkwlbpBEVKmyjRe4_UcyPQ"
+            <Image
+              src="/images/foto_hero.png"
               alt="Premium House Number Mockup"
               fill
               priority

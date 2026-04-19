@@ -4,7 +4,6 @@ import Hero from '@/components/sections/Hero';
 import SocialProof from '@/components/sections/SocialProof';
 import ProductGrid from '@/components/sections/ProductGrid';
 import HowItWorks from '@/components/sections/HowItWorks';
-import CustomizationPreviewer from '@/components/sections/CustomizationPreviewer';
 import Testimonials from '@/components/sections/Testimonials';
 import FAQ from '@/components/sections/FAQ';
 import CTASection from '@/components/sections/CTASection';
@@ -20,9 +19,9 @@ export default function Home() {
         <SocialProof />
         <SectionCategory />
         <ProductGrid />
-        <HowItWorks />
         <AdditionalProducts />
         <Testimonials />
+        <HowItWorks />
         <FAQ />
         <CTASection />
       </main>

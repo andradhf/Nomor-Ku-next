@@ -16,7 +16,7 @@ export default function Header() {
           <Link href="/#cara-pesan" className="font-headline tracking-tight text-lg text-primary drop-shadow-sm hover:text-on-primary hover:drop-shadow-md transition-all duration-300">
             Cara Pesan
           </Link>
-          <Link href="/#galeri" className="font-headline tracking-tight text-lg text-primary drop-shadow-sm hover:text-on-primary hover:drop-shadow-md transition-all duration-300">
+          <Link href="/#collections" className="font-headline tracking-tight text-lg text-primary drop-shadow-sm hover:text-on-primary hover:drop-shadow-md transition-all duration-300">
             Galeri
           </Link>
           <Link href="/#testimoni" className="font-headline tracking-tight text-lg text-primary drop-shadow-sm hover:text-on-primary hover:drop-shadow-md transition-all duration-300">
@@ -27,8 +27,7 @@ export default function Header() {
           href="/checkout"
           className="relative bg-primary text-on-primary px-6 py-2.5 rounded-xl font-medium transition-all duration-300 hover:bg-primary-container scale-95 active:scale-100 flex items-center gap-2 group"
         >
-          <i className="fa-solid fa-bag-shopping text-lg transition-transform duration-300 group-hover:scale-110" />
-          <span>Keranjang</span>
+          <span>Pesan Sekarang</span>
         </Link>
       </div>
     </nav>

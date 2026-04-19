@@ -21,9 +21,6 @@ export default function CTASection() {
         <p className="text-on-primary-container text-lg mb-12 max-w-2xl mx-auto">
           Mulai rancang nomor rumah impianmu hari ini dan rasakan kebanggaan setiap kali tiba di rumah.
         </p>
-        <button onClick={() => router.push('/katalog')} className="px-12 py-5 bg-tertiary text-on-tertiary rounded-full font-bold text-xl hover:bg-tertiary-container hover:scale-105 transition-all shadow-xl">
-          Mulai Desai Sekarang
-        </button>
       </div>
     </section>
   );
