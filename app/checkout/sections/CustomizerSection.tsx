@@ -141,7 +141,7 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
                   ? 'bg-gray-900 text-white border-gray-900'
                   : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400'
                 }`}>
-                {n === 1 ? 'Produk 1 — Portrait (Black Silver / Frosted / White)' : 'Produk 2 — Landscape (LED Solar)'}
+                {n === 1 ? 'Produk 1 — Portrait' : 'Produk 2 — Landscape (LED Solar)'}
               </button>
             ))}
           </div>
@@ -259,9 +259,6 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
                       className="transition-all duration-300" />
                   )}
                 </div>
-                <p className="text-xs text-gray-400 mt-2 text-center">
-                  * Preview menggunakan font lokal. Hasil aktual dapat sedikit berbeda.
-                </p>
               </div>
 
               <div>
