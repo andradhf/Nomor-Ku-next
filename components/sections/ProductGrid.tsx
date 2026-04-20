@@ -8,30 +8,30 @@ const products = [
   {
     id: '1',
     name: 'Nomor Rumah Akrilik (Black Silver)',
-    desc: 'Nomor Rumah Akrilik Double Layer Premium Cutting & Nomor Rumah Minimalis Elegan Tahan Cuaca Custom',
+    desc: 'Nomor Rumah Akrilik Double Layer Premium Cutting & Nomor Rumah Minimalis Elegan Tahan Cuaca Custom.',
     price: 'Rp 150.000',
-    imgSrc: '/images/black_silver_l.png'
+    imgSrc: '/images/produk_grid_norumah1.png'
   },
   {
     id: '2',
     name: 'Nomor Rumah Akrilik (White Black)',
-    desc: 'Nomor Rumah Akrilik Double Layer Premium Cutting & Nomor Rumah Minimalis Elegan Tahan Cuaca Custom',
+    desc: 'Nomor Rumah Akrilik Double Layer Premium Cutting & Nomor Rumah Minimalis Elegan Tahan Cuaca Custom.',
     price: 'Rp 129.000',
-    imgSrc: '/images/whiteblack_m.png'
+    imgSrc: '/images/produk_grid_norumah2.png'
   },
   {
     id: '3',
     name: 'Nomor Rumah Akrilix LED Solar Panel',
-    desc: 'Nomor Rumah Solar Panel LED | Lampu Alamat Rumah Otomatis Tanpa Kabel & Custom Nama & Nomor (24,5x22 cm).',
+    desc: 'Nomor Rumah Solar Panel LED | Lampu Alamat Rumah Otomatis Tanpa Kabel & Custom Nama & Nomor.',
     price: 'Rp 169.000',
     imgSrc: '/images/nomor_led_l.png'
   },
   {
     id: '4',
-    name: 'Nomor Rumah Akrilix LED Solar Panel',
-    desc: 'Nomor Rumah Solar Panel LED | Lampu Alamat Rumah Otomatis Tanpa Kabel & Custom Nama & Nomor (24,5x15 cm).',
-    price: 'Rp 139.000',
-    imgSrc: '/images/nomor_led_m.png'
+    name: 'Nomor Rumah Solar Panel LED Putih Boxl',
+    desc: 'Nomor Rumah Solar Panel LED Putih Box | Lampu Alamat Rumah Otomatis Tanpa Kabel | Custom Nama & Nomor.',
+    price: 'Rp 138.000 - Rp 350.000',
+    imgSrc: '/images/produk_led_box.png'
   }
 ];
 

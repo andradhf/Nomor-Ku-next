@@ -20,10 +20,9 @@ const P2_IMAGES: Record<string, string> = {
 };
 
 const P3_IMAGES: Record<string, string> = {
-  // Dummy — isi dengan foto asli saat tersedia
-  'white-solar_M':  '',
-  'white-solar_L':  '',
-  'white-solar_XL': '',
+  'white-solar_M':  '/images/produk_led_box_m.png',
+  'white-solar_L':  '/images/produk_led_box_l.png',
+  'white-solar_XL': '/images/produk_led_box_xl.png',
 };
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -61,9 +60,9 @@ export const PRODUCTS: Record<number, ProductConfig> = {
       { id: 'white-solar', label: 'White Solar LED', bg: '#f5f0e0', textColor: '#111111', subColor: '#222222', lineColor: '#333333', frameColor: null, led: true },
     ],
     sizes: [
-      { id: 'M',  label: 'M',  dim: '37×17×7 cm',  price: 149900 },
-      { id: 'L',  label: 'L',  dim: '40×20×7 cm',  price: 189900 },
-      { id: 'XL', label: 'XL', dim: '45×22×7 cm',  price: 229900 },
+      { id: 'M',  label: 'M',  dim: '37×17×7 cm',  price: 291500 },
+      { id: 'L',  label: 'L',  dim: '40×20×7 cm',  price: 308000 },
+      { id: 'XL', label: 'XL', dim: '45×22×7 cm',  price: 340000 },
     ],
   },
 };

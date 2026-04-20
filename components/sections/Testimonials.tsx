@@ -1,26 +1,22 @@
-import Image from 'next/image';
 
 const testimonials = [
   {
     rating: 5,
-    text: '"Hasilnya luar biasa rapi. Sangat cocok dengan konsep rumah industrial saya. CS-nya juga sabar banget bantu revisi desain berkali-kali."',
-    name: 'Arini Wijaya',
-    location: 'Bekasi',
-    avatarStr: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAQYACpFzOgZGi0jTeGAoK0Jh4Hu6ZT4p44pUo18AF-MsiHrsJzEjxN2vkECr-zfxM60war1Daas_9tCQbI2T8KpiQyowf3XmK4I1Iz2ircNXZEXu3b3O15u9v-g5_mtOwDygcZpGd_q19ux_h3QLZX6pT_SYW7yyNYVmtfAYMvSbM-r9MUw468xUoYwfRuarBby_JIGyAaH4gE-BhUnkT4aByslIy-3ayygdMZAWm0VcUdr051wQmUKPFelYG7mPG-Ff5KZv4kc8c'
+    text: '"Seller ramah, pengiriman lumayan cepat, hasilnya bagus saya suka hanya saran aja untuk bagian belakang nya agak lebih kuat lagi karena kemarin saya coba gerakkan ada yg longgar atau mau patah tapi masih aman kok, oiya satu lgi jangan lupa gratis kan baut atau paku tembok nya karena biasa nya saya pesan ada gratis paku tembok nya , terimakasih"',
+    name: 'raxxxxxx275',
+    location: '',
   },
   {
     rating: 5,
     text: '"Material akriliknya tebal dan premium. Sudah kena panas hujan 6 bulan tetap kinclong. Bikin rumah kelihatan lebih \'berkelas\' seketika."',
     name: 'Budi Santoso',
     location: 'Tangerang Selatan',
-    avatarStr: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD8DSu9pOIGazlylyhnGuynGQH9-yj16-Wm8er3Jag4Jxm_GAoPe9rhhU7AaaPCQpL-EiqU-k4RWBmnU2qsO0blDWxTzqsNjcpF0JOAIwiM2D63ALKX7U2Zyv2lGi_5vKgwioDlZIbxVKAdZ0jy8I4XVEeLm7kAELgIJ1mYZ0lgBuQLQ-zXqsRFFnNGqa3Fj3pIgolSICi1wTEZwOs0AW_V3Q3c8mqu3CsaSB1MkKPZgbmfUAleJmiCmp4rdl6Jx9gMXhN6tdl21uo'
   },
   {
     rating: 5,
-    text: '"Suka banget sama model Sage Garden-nya. Packaging aman, pengiriman cepat. Gak nyesel beli di NomorKu!"',
+    text: '"Suka banget sama model Sage Garden-nya. Packaging aman, pengiriman cepat. Gak nyesel beli"',
     name: 'Keluarga Pratama',
     location: 'Yogyakarta',
-    avatarStr: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDR-CFqKhjlZbaIaXHoR1qqBQ6MIobfYladq5nvUqESrfAEahC4I7ZJ61AwRW45jon_pCUTBf6Y6BY7v-GC2ogRhmmf576qHXP4NykaXZFKOpi6LQR9yLRmUf6vosrQ8u2Jozw0s9o2UPvrjEwaUJWcy6AdzMs_BD_N35S9-Xd0XCZwVkEoHDiXvv9hnd4os5ehZr7062WKJSShUj10Eq_6Sxc4ZQ3YzmpS_Txw0mJh3x_iPMlJNnQnj-56Tx0Tk7WA2bu2GJ85j9o'
   }
 ];
 
@@ -42,14 +38,16 @@ export default function Testimonials() {
               </div>
               <p className="italic text-on-surface-variant mb-8 leading-relaxed">{testimonial.text}</p>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full overflow-hidden relative">
-                  <Image 
-                    src={testimonial.avatarStr} 
-                    alt={`Avatar of ${testimonial.name}`}
-                    fill
-                    sizes="48px"
-                    className="object-cover"
-                  />
+                <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="white"
+                    className="w-7 h-7"
+                    aria-hidden="true"
+                  >
+                    <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
+                  </svg>
                 </div>
                 <div>
                   <p className="font-bold text-on-surface">{testimonial.name}</p>
