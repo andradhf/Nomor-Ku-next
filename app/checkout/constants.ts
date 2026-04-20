@@ -39,7 +39,7 @@ export const PRODUCTS: Record<number, ProductConfig> = {
     shape: 'landscape',
     images: P2_IMAGES,
     jenis: [
-      { id: 'black-led', label: 'Black LED Solar', bg: '#0d0d0d', textColor: '#C8C8C8', subColor: '#C8C8C8', lineColor: '#111111', frameColor: null, led: false },
+      { id: 'black-led', label: 'Black LED Solar', bg: '#0d0d0d', textColor: '#C8C8C8', subColor: '#C8C8C8', lineColor: '#111111', frameColor: null, led: true },
     ],
     sizes: [
       { id: 'S', label: 'S', dim: '18×15 cm',   price: 89900  },
@@ -257,36 +257,140 @@ export function drawLandscape(
   const PAD = 16;
   const cx = W / 2;
 
-  ctx.fillStyle = jenis.bg;
-  roundRect(ctx, 0, 0, W, H, R);
-  ctx.fill();
-
+  // ── Backlight glow di belakang plat (sebelum gambar plat) ──
   if (jenis.led) {
+    // Layer 1: glow paling luar & diffuse
     ctx.save();
-    ctx.strokeStyle = 'rgba(212,184,106,0.25)';
-    ctx.lineWidth = 8;
-    ctx.shadowColor = 'rgba(212,184,106,0.5)';
-    ctx.shadowBlur = 16;
-    roundRect(ctx, 6, 6, W - 12, H - 12, R - 2);
+    ctx.shadowColor = 'rgba(215, 185, 110, 0.5)';
+    ctx.shadowBlur = 50;
+    ctx.fillStyle = 'rgba(215, 185, 110, 0.01)';
+    roundRect(ctx, -4, -4, W + 8, H + 8, R + 6);
+    ctx.fill();
+    ctx.restore();
+
+    // Layer 2: glow menengah
+    ctx.save();
+    ctx.shadowColor = 'rgba(225, 195, 120, 0.6)';
+    ctx.shadowBlur = 28;
+    ctx.fillStyle = 'rgba(225, 195, 120, 0.01)';
+    roundRect(ctx, -2, -2, W + 4, H + 4, R + 4);
+    ctx.fill();
+    ctx.restore();
+
+    // Layer 3: inner edge glow (cahaya hangat di tepi plat)
+    ctx.save();
+    ctx.strokeStyle = 'rgba(212, 184, 106, 0.2)';
+    ctx.lineWidth = 7;
+    ctx.shadowColor = 'rgba(212, 184, 106, 0.65)';
+    ctx.shadowBlur = 24;
+    roundRect(ctx, 3, 3, W - 6, H - 6, R - 1);
     ctx.stroke();
     ctx.restore();
   }
 
+  // ── Plate background ──
+  ctx.fillStyle = jenis.bg;
+  roundRect(ctx, 0, 0, W, H, R);
+  ctx.fill();
+
+  // ── Corner screws ──
+  const screwInset = 14;
+  [[screwInset, screwInset], [W - screwInset, screwInset],
+   [screwInset, H - screwInset], [W - screwInset, H - screwInset]
+  ].forEach(([sx, sy]) => {
+    ctx.beginPath();
+    ctx.arc(sx, sy, 4.5, 0, Math.PI * 2);
+    ctx.fillStyle = '#252525';
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(sx, sy, 2.2, 0, Math.PI * 2);
+    ctx.fillStyle = '#3a3a3a';
+    ctx.fill();
+  });
+
+  // ── Ukuran font ──
   const subFontSize = Math.max(14, H * 0.13);
-  ctx.font = `${font.style} ${font.weight} ${subFontSize}px "${font.css}"`;
-
-  ctx.fillStyle = jenis.subColor;
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  const subY = PAD + (H - PAD * 2) * 0.80;
-  drawSpacedText(ctx, subText, cx, subY, 1.5);
-
   const mainAreaH = (H - PAD * 2) * 0.68;
   const mainFontSize = Math.min(mainAreaH * 0.72, W * 0.195);
+  const subY = PAD + (H - PAD * 2) * 0.80;
+  const mainY = PAD + mainAreaH / 2;
 
-  ctx.font = `${font.style} ${font.weight} ${mainFontSize}px "${font.css}"`;
-  ctx.fillStyle = jenis.textColor;
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillText(mainText, cx, PAD + mainAreaH / 2);
+  if (jenis.led) {
+    // ── Teks utama dengan efek glow LED ──
+    const WARM = 'rgba(240, 215, 145, 1)';
+    const WARM_MID = 'rgba(225, 200, 130, 0.85)';
+    const WARM_SOFT = 'rgba(200, 175, 100, 0.35)';
+
+    // Glow paling luar - main text
+    ctx.save();
+    ctx.font = `${font.style} ${font.weight} ${mainFontSize}px "${font.css}"`;
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillStyle = WARM_SOFT;
+    ctx.shadowColor = 'rgba(225, 200, 130, 0.75)';
+    ctx.shadowBlur = 28;
+    ctx.fillText(mainText, cx, mainY);
+    ctx.restore();
+
+    // Glow medium - main text
+    ctx.save();
+    ctx.font = `${font.style} ${font.weight} ${mainFontSize}px "${font.css}"`;
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillStyle = WARM_MID;
+    ctx.shadowColor = 'rgba(225, 200, 130, 0.6)';
+    ctx.shadowBlur = 12;
+    ctx.fillText(mainText, cx, mainY);
+    ctx.restore();
+
+    // Teks tajam atas - main text
+    ctx.save();
+    ctx.font = `${font.style} ${font.weight} ${mainFontSize}px "${font.css}"`;
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillStyle = WARM;
+    ctx.shadowColor = 'rgba(240, 220, 160, 0.4)';
+    ctx.shadowBlur = 4;
+    ctx.fillText(mainText, cx, mainY);
+    ctx.restore();
+
+    // Glow paling luar - sub text
+    ctx.save();
+    ctx.font = `${font.style} ${font.weight} ${subFontSize}px "${font.css}"`;
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillStyle = WARM_SOFT;
+    ctx.shadowColor = 'rgba(225, 200, 130, 0.65)';
+    ctx.shadowBlur = 20;
+    drawSpacedText(ctx, subText, cx, subY, 1.5);
+    ctx.restore();
+
+    // Glow medium - sub text
+    ctx.save();
+    ctx.font = `${font.style} ${font.weight} ${subFontSize}px "${font.css}"`;
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillStyle = WARM_MID;
+    ctx.shadowColor = 'rgba(225, 200, 130, 0.5)';
+    ctx.shadowBlur = 9;
+    drawSpacedText(ctx, subText, cx, subY, 1.5);
+    ctx.restore();
+
+    // Teks tajam atas - sub text
+    ctx.save();
+    ctx.font = `${font.style} ${font.weight} ${subFontSize}px "${font.css}"`;
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillStyle = WARM;
+    ctx.shadowColor = 'rgba(240, 220, 160, 0.3)';
+    ctx.shadowBlur = 3;
+    drawSpacedText(ctx, subText, cx, subY, 1.5);
+    ctx.restore();
+
+  } else {
+    // ── Teks biasa (fallback non-LED) ──
+    ctx.font = `${font.style} ${font.weight} ${subFontSize}px "${font.css}"`;
+    ctx.fillStyle = jenis.subColor;
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    drawSpacedText(ctx, subText, cx, subY, 1.5);
+
+    ctx.font = `${font.style} ${font.weight} ${mainFontSize}px "${font.css}"`;
+    ctx.fillStyle = jenis.textColor;
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(mainText, cx, mainY);
+  }
 }

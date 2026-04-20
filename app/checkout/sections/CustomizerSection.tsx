@@ -52,29 +52,29 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
   // ─── Load semua font lokal sekali saat mount ────────────────────────────────
   useEffect(() => {
     const fontsToLoad = [
-      new FontFace('Garet', "url('/fonts/Garet-Book.woff2')",  { weight: '400', style: 'normal' }),
+      new FontFace('Garet', "url('/fonts/Garet-Book.woff2')", { weight: '400', style: 'normal' }),
       new FontFace('Garet', "url('/fonts/Garet-Heavy.woff2')", { weight: '900', style: 'normal' }),
-      new FontFace('Plus Jakarta Sans', "url('/fonts/PlusJakartaSans-ExtraLight.ttf')",       { weight: '200', style: 'normal' }),
+      new FontFace('Plus Jakarta Sans', "url('/fonts/PlusJakartaSans-ExtraLight.ttf')", { weight: '200', style: 'normal' }),
       new FontFace('Plus Jakarta Sans', "url('/fonts/PlusJakartaSans-ExtraLightItalic.ttf')", { weight: '200', style: 'italic' }),
-      new FontFace('Plus Jakarta Sans', "url('/fonts/PlusJakartaSans-Light.ttf')",            { weight: '300', style: 'normal' }),
-      new FontFace('Plus Jakarta Sans', "url('/fonts/PlusJakartaSans-LightItalic.ttf')",      { weight: '300', style: 'italic' }),
-      new FontFace('Plus Jakarta Sans', "url('/fonts/PlusJakartaSans-Regular.ttf')",          { weight: '400', style: 'normal' }),
-      new FontFace('Plus Jakarta Sans', "url('/fonts/PlusJakartaSans-Italic.ttf')",           { weight: '400', style: 'italic' }),
-      new FontFace('Plus Jakarta Sans', "url('/fonts/PlusJakartaSans-Medium.ttf')",           { weight: '500', style: 'normal' }),
-      new FontFace('Plus Jakarta Sans', "url('/fonts/PlusJakartaSans-MediumItalic.ttf')",     { weight: '500', style: 'italic' }),
-      new FontFace('Plus Jakarta Sans', "url('/fonts/PlusJakartaSans-SemiBold.ttf')",         { weight: '600', style: 'normal' }),
-      new FontFace('Plus Jakarta Sans', "url('/fonts/PlusJakartaSans-SemiBoldItalic.ttf')",   { weight: '600', style: 'italic' }),
-      new FontFace('Plus Jakarta Sans', "url('/fonts/PlusJakartaSans-Bold.ttf')",             { weight: '700', style: 'normal' }),
-      new FontFace('Plus Jakarta Sans', "url('/fonts/PlusJakartaSans-BoldItalic.ttf')",       { weight: '700', style: 'italic' }),
-      new FontFace('Plus Jakarta Sans', "url('/fonts/PlusJakartaSans-ExtraBold.ttf')",        { weight: '800', style: 'normal' }),
-      new FontFace('Plus Jakarta Sans', "url('/fonts/PlusJakartaSans-ExtraBoldItalic.ttf')",  { weight: '800', style: 'italic' }),
+      new FontFace('Plus Jakarta Sans', "url('/fonts/PlusJakartaSans-Light.ttf')", { weight: '300', style: 'normal' }),
+      new FontFace('Plus Jakarta Sans', "url('/fonts/PlusJakartaSans-LightItalic.ttf')", { weight: '300', style: 'italic' }),
+      new FontFace('Plus Jakarta Sans', "url('/fonts/PlusJakartaSans-Regular.ttf')", { weight: '400', style: 'normal' }),
+      new FontFace('Plus Jakarta Sans', "url('/fonts/PlusJakartaSans-Italic.ttf')", { weight: '400', style: 'italic' }),
+      new FontFace('Plus Jakarta Sans', "url('/fonts/PlusJakartaSans-Medium.ttf')", { weight: '500', style: 'normal' }),
+      new FontFace('Plus Jakarta Sans', "url('/fonts/PlusJakartaSans-MediumItalic.ttf')", { weight: '500', style: 'italic' }),
+      new FontFace('Plus Jakarta Sans', "url('/fonts/PlusJakartaSans-SemiBold.ttf')", { weight: '600', style: 'normal' }),
+      new FontFace('Plus Jakarta Sans', "url('/fonts/PlusJakartaSans-SemiBoldItalic.ttf')", { weight: '600', style: 'italic' }),
+      new FontFace('Plus Jakarta Sans', "url('/fonts/PlusJakartaSans-Bold.ttf')", { weight: '700', style: 'normal' }),
+      new FontFace('Plus Jakarta Sans', "url('/fonts/PlusJakartaSans-BoldItalic.ttf')", { weight: '700', style: 'italic' }),
+      new FontFace('Plus Jakarta Sans', "url('/fonts/PlusJakartaSans-ExtraBold.ttf')", { weight: '800', style: 'normal' }),
+      new FontFace('Plus Jakarta Sans', "url('/fonts/PlusJakartaSans-ExtraBoldItalic.ttf')", { weight: '800', style: 'italic' }),
     ];
 
     Promise.all(
       fontsToLoad.map(f =>
         f.load()
           .then(loaded => { document.fonts.add(loaded); })
-          .catch(() => {})
+          .catch(() => { })
       )
     ).then(() => setFontsReady(true));
   }, []);
@@ -140,7 +140,7 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
                 className={`flex-1 py-3 px-4 rounded-xl border font-semibold text-sm transition-all ${activeProduct === n
                   ? 'bg-gray-900 text-white border-gray-900'
                   : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400'
-                }`}>
+                  }`}>
                 {n === 1 ? 'Produk 1 — Portrait' : 'Produk 2 — Landscape (LED Solar)'}
               </button>
             ))}
@@ -157,7 +157,7 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
                         className={`px-4 py-2 rounded-lg border text-sm font-medium transition-all ${jenisIdx === i
                           ? 'bg-gray-900 text-white border-gray-900'
                           : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400'
-                        }`}>{j.label}</button>
+                          }`}>{j.label}</button>
                     ))}
                   </div>
                 </div>
@@ -171,7 +171,7 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
                       className={`px-4 py-2 rounded-lg border text-sm font-medium transition-all ${sizeIdx === i
                         ? 'bg-gray-900 text-white border-gray-900'
                         : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400'
-                      }`}>
+                        }`}>
                       {s.label}
                       <span className="ml-1.5 text-xs opacity-60">{s.dim}</span>
                     </button>
@@ -189,7 +189,7 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
                       className={`px-4 py-2 rounded-lg border text-sm transition-all ${familyIdx === i
                         ? 'bg-gray-900 text-white border-gray-900'
                         : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400'
-                      }`}>{fam.label}</button>
+                        }`}>{fam.label}</button>
                   ))}
                 </div>
 
@@ -203,7 +203,7 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
                           className={`px-4 py-2 rounded-lg border text-sm transition-all ${variantIdx === i
                             ? 'bg-gray-900 text-white border-gray-900'
                             : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400'
-                          }`}>{v.label}</button>
+                            }`}>{v.label}</button>
                       ))}
                     </div>
                   </>
@@ -255,8 +255,21 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
                     <p className="text-xs text-gray-400">Memuat font...</p>
                   ) : (
                     <canvas ref={canvasRef}
-                      style={{ width: displayW, height: displayH, imageRendering: 'auto' }}
-                      className="transition-all duration-300" />
+                      style={{
+                        width: displayW,
+                        height: displayH,
+                        imageRendering: 'auto',
+                        ...(activeProduct === 2 && jenis.led ? {
+                          boxShadow: `
+                                0 0 18px 6px rgba(210, 180, 90, 0.55),
+                                0 0 40px 14px rgba(200, 165, 70, 0.35),
+                                0 0 70px 24px rgba(190, 150, 50, 0.18)
+                                `,
+                          borderRadius: '10px',
+                        } : {}),
+                      }}
+                      className="transition-all duration-500" />
+
                   )}
                 </div>
               </div>
@@ -275,7 +288,7 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
                         className={`rounded-xl overflow-hidden border-2 transition-all text-left ${isSelected
                           ? 'border-gray-900 shadow-md'
                           : 'border-transparent opacity-55 hover:opacity-80 hover:border-gray-300'
-                        }`}>
+                          }`}>
                         <div className={`w-full bg-gray-200 overflow-hidden ${product.shape === 'portrait' ? 'aspect-[3/4]' : 'aspect-[4/3]'}`}>
                           {src ? (
                             <img src={src} alt={`${jenis.label} ${s.label}`} className="w-full h-full object-cover" />
