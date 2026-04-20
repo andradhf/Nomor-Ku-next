@@ -41,7 +41,7 @@ export type FontFamilyGroup = {
 export type ProductConfig = {
   jenis: JenisOption[];
   sizes: SizeOption[];
-  shape: 'portrait' | 'landscape';
+  shape: 'portrait' | 'landscape' | 'lightbox';
   images: Record<string, string>;
 };
 

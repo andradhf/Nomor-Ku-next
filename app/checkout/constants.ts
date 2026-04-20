@@ -19,6 +19,13 @@ const P2_IMAGES: Record<string, string> = {
   'black-led_L':  '/images/nomor_led_l.png',
 };
 
+const P3_IMAGES: Record<string, string> = {
+  // Dummy — isi dengan foto asli saat tersedia
+  'white-solar_M':  '',
+  'white-solar_L':  '',
+  'white-solar_XL': '',
+};
+
 // ─── Data ─────────────────────────────────────────────────────────────────────
 export const PRODUCTS: Record<number, ProductConfig> = {
   1: {
@@ -45,6 +52,18 @@ export const PRODUCTS: Record<number, ProductConfig> = {
       { id: 'S', label: 'S', dim: '18×15 cm',   price: 89900  },
       { id: 'M', label: 'M', dim: '25,5×15 cm', price: 129900 },
       { id: 'L', label: 'L', dim: '24,5×22 cm', price: 179900 },
+    ],
+  },
+  3: {
+    shape: 'lightbox',
+    images: P3_IMAGES,
+    jenis: [
+      { id: 'white-solar', label: 'White Solar LED', bg: '#f5f0e0', textColor: '#111111', subColor: '#222222', lineColor: '#333333', frameColor: null, led: true },
+    ],
+    sizes: [
+      { id: 'M',  label: 'M',  dim: '37×17×7 cm',  price: 149900 },
+      { id: 'L',  label: 'L',  dim: '40×20×7 cm',  price: 189900 },
+      { id: 'XL', label: 'XL', dim: '45×22×7 cm',  price: 229900 },
     ],
   },
 };
@@ -140,6 +159,27 @@ function drawSpacedText(
   ctx.textAlign = 'center';
 }
 
+// ─── Shrink-to-fit helper ─────────────────────────────────────────────────────
+// Menurunkan ukuran font satu per satu sampai teks muat dalam maxW
+function fitFontSize(
+  ctx: CanvasRenderingContext2D,
+  text: string,
+  fontStyle: string,
+  fontWeight: number,
+  fontCss: string,
+  startSize: number,
+  maxW: number,
+  minSize = 10,
+): number {
+  let size = startSize;
+  while (size > minSize) {
+    ctx.font = `${fontStyle} ${fontWeight} ${size}px "${fontCss}"`;
+    if (ctx.measureText(text).width <= maxW) break;
+    size -= 1;
+  }
+  return size;
+}
+
 // ─── Canvas Renderers ─────────────────────────────────────────────────────────
 
 export function drawPortrait(
@@ -207,11 +247,18 @@ export function drawPortrait(
   const mainH      = mainBottom - mainTop;
 
   if (bottomText) {
-    const topSize  = Math.min(mainH * 0.44, W * 0.54);
-    const botSize  = Math.min(mainH * 0.40, W * 0.50);
-    const lineH    = Math.max(1.5, W * 0.011);
-    const lineW    = W * 0.52;
-    const vGap     = mainH * 0.05;
+    // Hitung ukuran awal
+    let topSize = Math.min(mainH * 0.44, W * 0.54);
+    let botSize = Math.min(mainH * 0.40, W * 0.50);
+    const lineH  = Math.max(1.5, W * 0.011);
+    const lineW  = W * 0.52;
+    const vGap   = mainH * 0.05;
+    // Batas maksimum lebar teks (lebar plat dalam dikurangi margin kiri-kanan)
+    const maxTextW = W - FRAME * 2 - 24;
+
+    // Shrink-to-fit: kecilkan sampai teks muat
+    topSize = fitFontSize(ctx, topText,    font.style, font.weight, font.css, topSize, maxTextW);
+    botSize = fitFontSize(ctx, bottomText, font.style, font.weight, font.css, botSize, maxTextW);
 
     const totalH = topSize + vGap + lineH + vGap + botSize;
     const startY = mainTop + (mainH - totalH) / 2;
@@ -237,7 +284,9 @@ export function drawPortrait(
     ctx.fillText(bottomText, cx, lineY + vGap + botSize * 0.86);
 
   } else {
-    const sz = Math.min(mainH * 0.6, W * 0.5);
+    const maxTextW = W - FRAME * 2 - 24;
+    let sz = Math.min(mainH * 0.6, W * 0.5);
+    sz = fitFontSize(ctx, topText, font.style, font.weight, font.css, sz, maxTextW);
     ctx.font = `${font.style} ${font.weight} ${sz}px "${font.css}"`;
     ctx.fillStyle = jenis.textColor;
     ctx.textAlign = 'center';
@@ -309,11 +358,16 @@ export function drawLandscape(
   });
 
   // ── Ukuran font ──
-  const subFontSize = Math.max(14, H * 0.13);
+  const PAD_H = 16 + 14; // plate padding + screw inset margin
+  const maxTextW = W - PAD_H * 2;
+  const subFontSizeInit = Math.max(14, H * 0.13);
   const mainAreaH = (H - PAD * 2) * 0.68;
-  const mainFontSize = Math.min(mainAreaH * 0.72, W * 0.195);
+  const mainFontSizeInit = Math.min(mainAreaH * 0.72, W * 0.195);
   const subY = PAD + (H - PAD * 2) * 0.80;
   const mainY = PAD + mainAreaH / 2;
+  // Shrink-to-fit
+  const mainFontSize = fitFontSize(ctx, mainText, font.style, font.weight, font.css, mainFontSizeInit, maxTextW);
+  const subFontSize  = fitFontSize(ctx, subText,  font.style, font.weight, font.css, subFontSizeInit,  maxTextW);
 
   if (jenis.led) {
     // ── Teks utama dengan efek glow LED ──
@@ -393,4 +447,181 @@ export function drawLandscape(
     ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
     ctx.fillText(mainText, cx, mainY);
   }
+}
+
+// ─── Solar Panel Helper ──────────────────────────────────────────────────────
+function drawSolarPanel(
+  ctx: CanvasRenderingContext2D,
+  x: number, y: number, panW: number, panH: number,
+) {
+  ctx.save();
+  ctx.fillStyle = '#1a2540';
+  roundRect(ctx, x, y, panW, panH, 3);
+  ctx.fill();
+  ctx.strokeStyle = 'rgba(100, 140, 200, 0.4)';
+  ctx.lineWidth = 0.8;
+  ctx.stroke();
+
+  const cols = 5;
+  const rows = 3;
+  const pad = 2.5;
+  const cellW = (panW - pad * (cols + 1)) / cols;
+  const cellH = (panH - pad * (rows + 1)) / rows;
+
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      const cx2 = x + pad * (c + 1) + cellW * c;
+      const cy2 = y + pad * (r + 1) + cellH * r;
+      ctx.fillStyle = '#1e3d80';
+      ctx.fillRect(cx2, cy2, cellW, cellH);
+      ctx.fillStyle = 'rgba(100, 160, 240, 0.22)';
+      ctx.fillRect(cx2, cy2, cellW * 0.45, cellH * 0.4);
+    }
+  }
+
+  ctx.strokeStyle = 'rgba(255,255,255,0.3)';
+  ctx.lineWidth = 0.5;
+  for (let r = 1; r < rows; r++) {
+    const lineY = y + pad * (r + 0.5) + cellH * r;
+    ctx.beginPath();
+    ctx.moveTo(x + pad, lineY);
+    ctx.lineTo(x + panW - pad, lineY);
+    ctx.stroke();
+  }
+  ctx.restore();
+}
+
+// ─── Lightbox (Produk 3) Renderer ───────────────────────────────────────────
+export function drawLightBox(
+  ctx: CanvasRenderingContext2D,
+  W: number, H: number,
+  jenis: JenisOption, font: FontOption,
+  topCode: string, bottomCode: string,
+) {
+  ctx.clearRect(0, 0, W, H);
+  const R = 14;
+  const cx = W / 2;
+
+  // ── Warm white luminous background ──
+  const bgGrad = ctx.createLinearGradient(0, 0, 0, H);
+  bgGrad.addColorStop(0,    '#fffce8');
+  bgGrad.addColorStop(0.15, '#fffff5');
+  bgGrad.addColorStop(0.5,  '#ffffff');
+  bgGrad.addColorStop(0.85, '#fffff5');
+  bgGrad.addColorStop(1,    '#fffce8');
+  ctx.fillStyle = bgGrad;
+  roundRect(ctx, 0, 0, W, H, R);
+  ctx.fill();
+
+  if (jenis.led) {
+    // Internal radial glow — upper half
+    ctx.save();
+    const g1 = ctx.createRadialGradient(cx, H * 0.28, 0, cx, H * 0.28, W * 0.75);
+    g1.addColorStop(0, 'rgba(255, 252, 218, 0.65)');
+    g1.addColorStop(1, 'rgba(255, 248, 200, 0)');
+    ctx.fillStyle = g1;
+    roundRect(ctx, 0, 0, W, H, R);
+    ctx.fill();
+    ctx.restore();
+
+    // Internal radial glow — lower half
+    ctx.save();
+    const g2 = ctx.createRadialGradient(cx, H * 0.76, 0, cx, H * 0.76, W * 0.75);
+    g2.addColorStop(0, 'rgba(255, 252, 218, 0.65)');
+    g2.addColorStop(1, 'rgba(255, 248, 200, 0)');
+    ctx.fillStyle = g2;
+    roundRect(ctx, 0, 0, W, H, R);
+    ctx.fill();
+    ctx.restore();
+
+    // Top edge warm LED bleed
+    ctx.save();
+    const tGrad = ctx.createLinearGradient(0, 0, 0, H * 0.22);
+    tGrad.addColorStop(0, 'rgba(255, 205, 70, 0.42)');
+    tGrad.addColorStop(1, 'rgba(255, 205, 70, 0)');
+    ctx.fillStyle = tGrad;
+    roundRect(ctx, 0, 0, W, H, R);
+    ctx.fill();
+    ctx.restore();
+
+    // Bottom edge warm LED bleed
+    ctx.save();
+    const bGrad = ctx.createLinearGradient(0, H, 0, H * 0.80);
+    bGrad.addColorStop(0, 'rgba(255, 205, 70, 0.42)');
+    bGrad.addColorStop(1, 'rgba(255, 205, 70, 0)');
+    ctx.fillStyle = bGrad;
+    roundRect(ctx, 0, 0, W, H, R);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  // Plate border
+  ctx.save();
+  ctx.strokeStyle = 'rgba(185, 162, 100, 0.45)';
+  ctx.lineWidth = 1.5;
+  roundRect(ctx, 0.75, 0.75, W - 1.5, H - 1.5, R);
+  ctx.stroke();
+  ctx.restore();
+
+  // ── Layout splits ──
+  const solarTop = H * 0.42;
+  const solarH   = H * 0.17;
+  const solarBot = solarTop + solarH;
+
+  const labelSize = Math.max(11, W * 0.09);
+  const codeSize  = Math.max(26, W * 0.26);
+
+  // Upper "BLOK" label
+  ctx.save();
+  ctx.font = `normal 700 ${labelSize}px "${font.css}"`;
+  ctx.fillStyle = jenis.textColor;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('BLOK', cx, solarTop * 0.26);
+  ctx.restore();
+
+  // Upper block code (e.g. "M1") — shrink-to-fit
+  const maxCodeW = W - 24;
+  const codeSizeTop = fitFontSize(ctx, topCode,    font.style, font.weight, font.css, codeSize, maxCodeW);
+  const codeSizeBot = fitFontSize(ctx, bottomCode, font.style, font.weight, font.css, codeSize, maxCodeW);
+
+  ctx.save();
+  ctx.font = `${font.style} ${font.weight} ${codeSizeTop}px "${font.css}"`;
+  ctx.fillStyle = jenis.textColor;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(topCode, cx, solarTop * 0.66);
+  ctx.restore();
+
+  // Solar band (black strip, edge-to-edge)
+  ctx.save();
+  ctx.fillStyle = '#111111';
+  ctx.fillRect(0, solarTop, W, solarH);
+  ctx.restore();
+
+  // Solar panel inside strip
+  const panW = W * 0.58;
+  const panH = solarH * 0.62;
+  const panX = cx - panW / 2;
+  const panY = solarTop + (solarH - panH) / 2;
+  drawSolarPanel(ctx, panX, panY, panW, panH);
+
+  // Lower "NO" label
+  const lowerH = H - solarBot;
+  ctx.save();
+  ctx.font = `normal 700 ${labelSize}px "${font.css}"`;
+  ctx.fillStyle = jenis.textColor;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('NO', cx, solarBot + lowerH * 0.24);
+  ctx.restore();
+
+  // Lower house number (e.g. "01") — shrink-to-fit
+  ctx.save();
+  ctx.font = `${font.style} ${font.weight} ${codeSizeBot}px "${font.css}"`;
+  ctx.fillStyle = jenis.textColor;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(bottomCode, cx, solarBot + lowerH * 0.67);
+  ctx.restore();
 }

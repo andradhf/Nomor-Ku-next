@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { PRODUCTS, FONT_FAMILIES, drawPortrait, drawLandscape, formatRp } from '../constants';
+import { PRODUCTS, FONT_FAMILIES, drawPortrait, drawLandscape, drawLightBox, formatRp } from '../constants';
 import { CartItem, FontOption } from '../types';
 
 interface CustomizerProps {
@@ -10,7 +10,7 @@ interface CustomizerProps {
 }
 
 export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
-  const [activeProduct, setActiveProduct] = useState<1 | 2>(1);
+  const [activeProduct, setActiveProduct] = useState<1 | 2 | 3>(1);
   const [jenisIdx, setJenisIdx] = useState(0);
   const [sizeIdx, setSizeIdx] = useState(0);
   const [familyIdx, setFamilyIdx] = useState(0);
@@ -36,8 +36,8 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
     style: activeVariant.style,
   };
 
-  const CW = product.shape === 'portrait' ? 210 : 380;
-  const CH = product.shape === 'portrait' ? 360 : 240;
+  const CW = product.shape === 'portrait' ? 210 : product.shape === 'landscape' ? 380 : 190;
+  const CH = product.shape === 'portrait' ? 360 : product.shape === 'landscape' ? 240 : 400;
 
   const parsedTop = product.shape === 'portrait'
     ? (mainText.includes('/') ? mainText.split('/')[0].trim() : mainText)
@@ -91,23 +91,25 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
 
     if (product.shape === 'portrait') {
       drawPortrait(ctx, CW, CH, jenis, font, parsedTop, parsedBottom, subText);
-    } else {
+    } else if (product.shape === 'landscape') {
       drawLandscape(ctx, CW, CH, jenis, font, parsedTop, subText);
+    } else {
+      drawLightBox(ctx, CW, CH, jenis, font, mainText, subText);
     }
   }, [fontsReady, activeProduct, jenisIdx, sizeIdx, familyIdx, variantIdx, mainText, subText, product.shape, jenis, font, parsedTop, parsedBottom, CW, CH]);
 
-  const handleSwitchProduct = (n: 1 | 2) => {
+  const handleSwitchProduct = (n: 1 | 2 | 3) => {
     setActiveProduct(n);
     setJenisIdx(0);
     setSizeIdx(0);
-    setMainText(n === 1 ? 'A/11' : 'N10|32');
-    setSubText(n === 1 ? 'Citra Harmoni' : 'San Antonio');
+    setMainText(n === 1 ? 'A/11' : n === 2 ? 'N10|32' : 'M1');
+    setSubText(n === 1 ? 'Citra Harmoni' : n === 2 ? 'San Antonio' : '01');
   };
 
   const handleDisplayCart = () => {
     const item: CartItem = {
       id: Date.now(),
-      name: `Nomor Rumah Akrilik ${activeProduct === 1 ? 'Portrait' : 'Landscape'}`,
+      name: `Nomor Rumah Akrilik ${activeProduct === 1 ? 'Portrait' : activeProduct === 2 ? 'Landscape LED' : 'Lightbox LED'}`,
       details: `- Jenis: ${jenis.label}\n- Size: ${size.label} (${size.dim})\n- Font: ${font.label}\n- Kode / Nomor: ${mainText}\n- Nama Perumahan: ${subText}`,
       price: size.price,
       imageSrc: realImgSrc,
@@ -116,8 +118,8 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
     onAddToCart(item);
   };
 
-  const displayW = product.shape === 'portrait' ? 158 : 300;
-  const displayH = product.shape === 'portrait' ? 270 : 190;
+  const displayW = product.shape === 'portrait' ? 158 : product.shape === 'landscape' ? 300 : 143;
+  const displayH = product.shape === 'portrait' ? 270 : product.shape === 'landscape' ? 190 : 300;
 
   return (
     <section className="py-24">
@@ -135,13 +137,13 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
           </p>
 
           <div className="flex gap-3 mb-10">
-            {([1, 2] as const).map(n => (
+            {([1, 2, 3] as const).map(n => (
               <button key={n} onClick={() => handleSwitchProduct(n)}
                 className={`flex-1 py-3 px-4 rounded-xl border font-semibold text-sm transition-all ${activeProduct === n
                   ? 'bg-gray-900 text-white border-gray-900'
                   : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400'
                   }`}>
-                {n === 1 ? 'Produk 1 — Portrait' : 'Produk 2 — Landscape (LED Solar)'}
+                {n === 1 ? 'Produk 1 — Portrait' : n === 2 ? 'Produk 2 — Landscape LED' : 'Produk 3 — Lightbox LED'}
               </button>
             ))}
           </div>
@@ -214,20 +216,22 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
                 <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">
                   {product.shape === 'portrait'
                     ? 'Kode / Nomor — gunakan "/" untuk pemisah baris (contoh: A/11, F/18)'
-                    : 'Kode / Nomor — gunakan "|" untuk pemisah (contoh: N10|32, A2|09)'}
+                    : product.shape === 'landscape'
+                    ? 'Kode / Nomor — gunakan "|" untuk pemisah (contoh: N10|32, A2|09)'
+                    : 'Kode Blok — contoh: M1, A2, B5'}
                 </label>
                 <input type="text" value={mainText} onChange={e => setMainText(e.target.value)}
                   maxLength={10}
-                  placeholder={product.shape === 'portrait' ? 'A/11' : 'N10|32'}
+                  placeholder={product.shape === 'portrait' ? 'A/11' : product.shape === 'landscape' ? 'N10|32' : 'M1'}
                   className="w-full p-3 rounded-xl bg-white border border-gray-200 focus:border-gray-900 focus:ring-2 focus:ring-gray-100 outline-none transition-all text-sm" />
               </div>
 
               <div>
                 <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">
-                  Nama Perumahan / Sub-teks
+                  {product.shape === 'lightbox' ? 'Nomor Rumah — contoh: 01, 23, 09' : 'Nama Perumahan / Sub-teks'}
                 </label>
                 <input type="text" value={subText} onChange={e => setSubText(e.target.value)}
-                  maxLength={30} placeholder="Citra Harmoni"
+                  maxLength={30} placeholder={product.shape === 'lightbox' ? '01' : 'Citra Harmoni'}
                   className="w-full p-3 rounded-xl bg-white border border-gray-200 focus:border-gray-900 focus:ring-2 focus:ring-gray-100 outline-none transition-all text-sm" />
               </div>
 
@@ -266,6 +270,14 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
                                 0 0 70px 24px rgba(190, 150, 50, 0.18)
                                 `,
                           borderRadius: '10px',
+                        } : activeProduct === 3 && jenis.led ? {
+                          boxShadow: `
+                                0 -10px 28px 6px rgba(215, 175, 60, 0.52),
+                                0 10px 28px 6px rgba(215, 175, 60, 0.48),
+                                0 -22px 50px 12px rgba(200, 160, 50, 0.3),
+                                0 22px 50px 12px rgba(200, 160, 50, 0.28)
+                                `,
+                          borderRadius: '12px',
                         } : {}),
                       }}
                       className="transition-all duration-500" />
@@ -289,7 +301,7 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
                           ? 'border-gray-900 shadow-md'
                           : 'border-transparent opacity-55 hover:opacity-80 hover:border-gray-300'
                           }`}>
-                        <div className={`w-full bg-gray-200 overflow-hidden ${product.shape === 'portrait' ? 'aspect-[3/4]' : 'aspect-[4/3]'}`}>
+                        <div className={`w-full bg-gray-200 overflow-hidden ${product.shape === 'landscape' ? 'aspect-[4/3]' : 'aspect-[3/4]'}`}>
                           {src ? (
                             <img src={src} alt={`${jenis.label} ${s.label}`} className="w-full h-full object-cover" />
                           ) : (
