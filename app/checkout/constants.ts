@@ -192,6 +192,36 @@ export function drawPortrait(
   const R = 16;
   const cx = W / 2;
 
+  if (jenis.led) {
+    // Layer 1: glow paling luar & diffuse
+    ctx.save();
+    ctx.shadowColor = 'rgba(215, 185, 110, 0.5)';
+    ctx.shadowBlur = 50;
+    ctx.fillStyle = 'rgba(215, 185, 110, 0.01)';
+    roundRect(ctx, -4, -4, W + 8, H + 8, R + 6);
+    ctx.fill();
+    ctx.restore();
+
+    // Layer 2: glow menengah
+    ctx.save();
+    ctx.shadowColor = 'rgba(225, 195, 120, 0.6)';
+    ctx.shadowBlur = 28;
+    ctx.fillStyle = 'rgba(225, 195, 120, 0.01)';
+    roundRect(ctx, -2, -2, W + 4, H + 4, R + 4);
+    ctx.fill();
+    ctx.restore();
+
+    // Layer 3: inner edge glow
+    ctx.save();
+    ctx.strokeStyle = 'rgba(212, 184, 106, 0.2)';
+    ctx.lineWidth = 7;
+    ctx.shadowColor = 'rgba(212, 184, 106, 0.65)';
+    ctx.shadowBlur = 24;
+    roundRect(ctx, 3, 3, W - 6, H - 6, R - 1);
+    ctx.stroke();
+    ctx.restore();
+  }
+
   if (jenis.frameColor) {
     const grad = ctx.createLinearGradient(0, 0, W, H);
     grad.addColorStop(0, '#c0c0c0');
@@ -233,13 +263,47 @@ export function drawPortrait(
   const subBlockH = subLines.length * subLineH;
 
   const subCenterY = insetTop + insetH * 0.74;
-  ctx.fillStyle = jenis.subColor;
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  subLines.forEach((line, i) => {
-    const y = subCenterY + (i - (subLines.length - 1) / 2) * subLineH;
-    drawSpacedText(ctx, line, cx, y, 2.5);
-  });
+  
+  if (jenis.led) {
+    const WARM = 'rgba(240, 215, 145, 1)';
+    const WARM_MID = 'rgba(225, 200, 130, 0.85)';
+    const WARM_SOFT = 'rgba(200, 175, 100, 0.35)';
+
+    subLines.forEach((line, i) => {
+      const y = subCenterY + (i - (subLines.length - 1) / 2) * subLineH;
+      // Glow outer
+      ctx.save();
+      ctx.fillStyle = WARM_SOFT;
+      ctx.shadowColor = 'rgba(225, 200, 130, 0.65)';
+      ctx.shadowBlur = 20;
+      drawSpacedText(ctx, line, cx, y, 2.5);
+      ctx.restore();
+
+      // Glow mid
+      ctx.save();
+      ctx.fillStyle = WARM_MID;
+      ctx.shadowColor = 'rgba(225, 200, 130, 0.5)';
+      ctx.shadowBlur = 9;
+      drawSpacedText(ctx, line, cx, y, 2.5);
+      ctx.restore();
+
+      // Sharp text
+      ctx.save();
+      ctx.fillStyle = WARM;
+      ctx.shadowColor = 'rgba(240, 220, 160, 0.3)';
+      ctx.shadowBlur = 3;
+      drawSpacedText(ctx, line, cx, y, 2.5);
+      ctx.restore();
+    });
+  } else {
+    ctx.fillStyle = jenis.subColor;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    subLines.forEach((line, i) => {
+      const y = subCenterY + (i - (subLines.length - 1) / 2) * subLineH;
+      drawSpacedText(ctx, line, cx, y, 2.5);
+    });
+  }
 
   const mainBottom = subCenterY - subBlockH / 2 - 10;
   const mainTop    = insetTop;
@@ -262,35 +326,116 @@ export function drawPortrait(
     const totalH = topSize + vGap + lineH + vGap + botSize;
     const startY = mainTop + (mainH - totalH) / 2;
 
-    ctx.font = `${font.style} ${font.weight} ${topSize}px "${font.css}"`;
-    ctx.fillStyle = jenis.textColor;
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'alphabetic';
-    ctx.fillText(topText, cx, startY + topSize * 0.86);
-
     const lineY = startY + topSize + vGap;
-    ctx.strokeStyle = jenis.lineColor;
-    ctx.lineWidth = lineH;
-    ctx.beginPath();
-    ctx.moveTo(cx - lineW / 2, lineY);
-    ctx.lineTo(cx + lineW / 2, lineY);
-    ctx.stroke();
 
-    ctx.font = `${font.style} ${font.weight} ${botSize}px "${font.css}"`;
-    ctx.fillStyle = jenis.textColor;
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'alphabetic';
-    ctx.fillText(bottomText, cx, lineY + vGap + botSize * 0.86);
+    if (jenis.led) {
+      const WARM = 'rgba(240, 215, 145, 1)';
+      const WARM_MID = 'rgba(225, 200, 130, 0.85)';
+      const WARM_SOFT = 'rgba(200, 175, 100, 0.35)';
+
+      const drawGlowingText = (text: string, yPos: number, size: number) => {
+        ctx.font = `${font.style} ${font.weight} ${size}px "${font.css}"`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'alphabetic';
+        
+        ctx.save();
+        ctx.fillStyle = WARM_SOFT;
+        ctx.shadowColor = 'rgba(225, 200, 130, 0.75)';
+        ctx.shadowBlur = 28;
+        ctx.fillText(text, cx, yPos);
+        ctx.restore();
+
+        ctx.save();
+        ctx.fillStyle = WARM_MID;
+        ctx.shadowColor = 'rgba(225, 200, 130, 0.6)';
+        ctx.shadowBlur = 12;
+        ctx.fillText(text, cx, yPos);
+        ctx.restore();
+
+        ctx.save();
+        ctx.fillStyle = WARM;
+        ctx.shadowColor = 'rgba(240, 220, 160, 0.4)';
+        ctx.shadowBlur = 4;
+        ctx.fillText(text, cx, yPos);
+        ctx.restore();
+      };
+
+      drawGlowingText(topText, startY + topSize * 0.86, topSize);
+
+      ctx.save();
+      ctx.strokeStyle = WARM;
+      ctx.shadowColor = 'rgba(240, 220, 160, 0.6)';
+      ctx.shadowBlur = 10;
+      ctx.lineWidth = lineH;
+      ctx.beginPath();
+      ctx.moveTo(cx - lineW / 2, lineY);
+      ctx.lineTo(cx + lineW / 2, lineY);
+      ctx.stroke();
+      ctx.restore();
+
+      drawGlowingText(bottomText, lineY + vGap + botSize * 0.86, botSize);
+    } else {
+      ctx.font = `${font.style} ${font.weight} ${topSize}px "${font.css}"`;
+      ctx.fillStyle = jenis.textColor;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'alphabetic';
+      ctx.fillText(topText, cx, startY + topSize * 0.86);
+
+      ctx.strokeStyle = jenis.lineColor;
+      ctx.lineWidth = lineH;
+      ctx.beginPath();
+      ctx.moveTo(cx - lineW / 2, lineY);
+      ctx.lineTo(cx + lineW / 2, lineY);
+      ctx.stroke();
+
+      ctx.font = `${font.style} ${font.weight} ${botSize}px "${font.css}"`;
+      ctx.fillStyle = jenis.textColor;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'alphabetic';
+      ctx.fillText(bottomText, cx, lineY + vGap + botSize * 0.86);
+    }
 
   } else {
     const maxTextW = W - FRAME * 2 - 24;
     let sz = Math.min(mainH * 0.6, W * 0.5);
     sz = fitFontSize(ctx, topText, font.style, font.weight, font.css, sz, maxTextW);
-    ctx.font = `${font.style} ${font.weight} ${sz}px "${font.css}"`;
-    ctx.fillStyle = jenis.textColor;
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(topText, cx, mainTop + mainH / 2);
+    
+    if (jenis.led) {
+      const WARM = 'rgba(240, 215, 145, 1)';
+      const WARM_MID = 'rgba(225, 200, 130, 0.85)';
+      const WARM_SOFT = 'rgba(200, 175, 100, 0.35)';
+
+      ctx.font = `${font.style} ${font.weight} ${sz}px "${font.css}"`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+
+      ctx.save();
+      ctx.fillStyle = WARM_SOFT;
+      ctx.shadowColor = 'rgba(225, 200, 130, 0.75)';
+      ctx.shadowBlur = 28;
+      ctx.fillText(topText, cx, mainTop + mainH / 2);
+      ctx.restore();
+
+      ctx.save();
+      ctx.fillStyle = WARM_MID;
+      ctx.shadowColor = 'rgba(225, 200, 130, 0.6)';
+      ctx.shadowBlur = 12;
+      ctx.fillText(topText, cx, mainTop + mainH / 2);
+      ctx.restore();
+
+      ctx.save();
+      ctx.fillStyle = WARM;
+      ctx.shadowColor = 'rgba(240, 220, 160, 0.4)';
+      ctx.shadowBlur = 4;
+      ctx.fillText(topText, cx, mainTop + mainH / 2);
+      ctx.restore();
+    } else {
+      ctx.font = `${font.style} ${font.weight} ${sz}px "${font.css}"`;
+      ctx.fillStyle = jenis.textColor;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(topText, cx, mainTop + mainH / 2);
+    }
   }
 }
 
@@ -301,7 +446,7 @@ export function drawLandscape(
   mainText: string, subText: string,
 ) {
   ctx.clearRect(0, 0, W, H);
-  const R = 12;
+  const R = 0; // Radius dihilangkan sesuai permintaan
   const PAD = 16;
   const cx = W / 2;
 
@@ -312,7 +457,7 @@ export function drawLandscape(
     ctx.shadowColor = 'rgba(215, 185, 110, 0.5)';
     ctx.shadowBlur = 50;
     ctx.fillStyle = 'rgba(215, 185, 110, 0.01)';
-    roundRect(ctx, -4, -4, W + 8, H + 8, R + 6);
+    roundRect(ctx, -4, -4, W + 8, H + 8, 0);
     ctx.fill();
     ctx.restore();
 
@@ -321,7 +466,7 @@ export function drawLandscape(
     ctx.shadowColor = 'rgba(225, 195, 120, 0.6)';
     ctx.shadowBlur = 28;
     ctx.fillStyle = 'rgba(225, 195, 120, 0.01)';
-    roundRect(ctx, -2, -2, W + 4, H + 4, R + 4);
+    roundRect(ctx, -2, -2, W + 4, H + 4, 0);
     ctx.fill();
     ctx.restore();
 
@@ -331,30 +476,17 @@ export function drawLandscape(
     ctx.lineWidth = 7;
     ctx.shadowColor = 'rgba(212, 184, 106, 0.65)';
     ctx.shadowBlur = 24;
-    roundRect(ctx, 3, 3, W - 6, H - 6, R - 1);
+    roundRect(ctx, 3, 3, W - 6, H - 6, 0);
     ctx.stroke();
     ctx.restore();
   }
 
   // ── Plate background ──
   ctx.fillStyle = jenis.bg;
-  roundRect(ctx, 0, 0, W, H, R);
+  roundRect(ctx, 0, 0, W, H, 0);
   ctx.fill();
 
-  // ── Corner screws ──
-  const screwInset = 14;
-  [[screwInset, screwInset], [W - screwInset, screwInset],
-   [screwInset, H - screwInset], [W - screwInset, H - screwInset]
-  ].forEach(([sx, sy]) => {
-    ctx.beginPath();
-    ctx.arc(sx, sy, 4.5, 0, Math.PI * 2);
-    ctx.fillStyle = '#252525';
-    ctx.fill();
-    ctx.beginPath();
-    ctx.arc(sx, sy, 2.2, 0, Math.PI * 2);
-    ctx.fillStyle = '#3a3a3a';
-    ctx.fill();
-  });
+
 
   // ── Ukuran font ──
   const PAD_H = 16 + 14; // plate padding + screw inset margin

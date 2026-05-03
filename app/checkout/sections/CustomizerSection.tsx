@@ -18,6 +18,7 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
   const [mainText, setMainText] = useState('A/11');
   const [subText, setSubText] = useState('Citra Harmoni');
   const [fontsReady, setFontsReady] = useState(false);
+  const [isLed, setIsLed] = useState(false);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -89,19 +90,22 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
     canvas.width = CW;
     canvas.height = CH;
 
+    const currentJenis = { ...jenis, led: activeProduct === 1 ? isLed : jenis.led };
+
     if (product.shape === 'portrait') {
-      drawPortrait(ctx, CW, CH, jenis, font, parsedTop, parsedBottom, subText);
+      drawPortrait(ctx, CW, CH, currentJenis, font, parsedTop, parsedBottom, subText);
     } else if (product.shape === 'landscape') {
-      drawLandscape(ctx, CW, CH, jenis, font, parsedTop, subText);
+      drawLandscape(ctx, CW, CH, currentJenis, font, parsedTop, subText);
     } else {
-      drawLightBox(ctx, CW, CH, jenis, font, mainText, subText);
+      drawLightBox(ctx, CW, CH, currentJenis, font, mainText, subText);
     }
-  }, [fontsReady, activeProduct, jenisIdx, sizeIdx, familyIdx, variantIdx, mainText, subText, product.shape, jenis, font, parsedTop, parsedBottom, CW, CH]);
+  }, [fontsReady, activeProduct, jenisIdx, sizeIdx, familyIdx, variantIdx, mainText, subText, product.shape, jenis, font, parsedTop, parsedBottom, CW, CH, isLed]);
 
   const handleSwitchProduct = (n: 1 | 2 | 3) => {
     setActiveProduct(n);
     setJenisIdx(0);
     setSizeIdx(0);
+    setIsLed(false);
     setMainText(n === 1 ? 'A/11' : n === 2 ? 'N10|32' : 'M1');
     setSubText(n === 1 ? 'Citra Harmoni' : n === 2 ? 'San Antonio' : '01');
   };
@@ -109,8 +113,8 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
   const handleDisplayCart = () => {
     const item: CartItem = {
       id: Date.now(),
-      name: `Nomor Rumah Akrilik ${activeProduct === 1 ? 'Portrait' : activeProduct === 2 ? 'Landscape LED' : 'Lightbox LED'}`,
-      details: `- Jenis: ${jenis.label}\n- Size: ${size.label} (${size.dim})\n- Font: ${font.label}\n- Kode / Nomor: ${mainText}\n- Nama Perumahan: ${subText}`,
+      name: `Nomor Rumah Akrilik ${activeProduct === 1 ? (isLed ? 'Portrait LED' : 'Portrait') : activeProduct === 2 ? 'Landscape LED' : 'Lightbox LED'}`,
+      details: `- Jenis: ${jenis.label}${activeProduct === 1 && isLed ? ' (LED)' : ''}\n- Size: ${size.label} (${size.dim})\n- Font: ${font.label}\n- Kode / Nomor: ${mainText}\n- Nama Perumahan: ${subText}`,
       price: size.price,
       imageSrc: realImgSrc,
       quantity: 1,
@@ -161,6 +165,24 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
                           : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400'
                           }`}>{j.label}</button>
                     ))}
+                  </div>
+                </div>
+              )}
+
+              {activeProduct === 1 && (
+                <div>
+                  <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">Opsi Pencahayaan</label>
+                  <div className="flex flex-wrap gap-2">
+                    <button onClick={() => setIsLed(false)}
+                      className={`px-4 py-2 rounded-lg border text-sm font-medium transition-all ${!isLed
+                        ? 'bg-gray-900 text-white border-gray-900'
+                        : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400'
+                        }`}>Tanpa LED</button>
+                    <button onClick={() => setIsLed(true)}
+                      className={`px-4 py-2 rounded-lg border text-sm font-medium transition-all ${isLed
+                        ? 'bg-gray-900 text-white border-gray-900'
+                        : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400'
+                        }`}>Dengan LED</button>
                   </div>
                 </div>
               )}
@@ -263,13 +285,20 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
                         width: displayW,
                         height: displayH,
                         imageRendering: 'auto',
-                        ...(activeProduct === 2 && jenis.led ? {
+                        ...(activeProduct === 1 && isLed ? {
                           boxShadow: `
                                 0 0 18px 6px rgba(210, 180, 90, 0.55),
                                 0 0 40px 14px rgba(200, 165, 70, 0.35),
                                 0 0 70px 24px rgba(190, 150, 50, 0.18)
                                 `,
-                          borderRadius: '10px',
+                          borderRadius: '16px',
+                        } : activeProduct === 2 && jenis.led ? {
+                          boxShadow: `
+                                0 0 18px 6px rgba(210, 180, 90, 0.55),
+                                0 0 40px 14px rgba(200, 165, 70, 0.35),
+                                0 0 70px 24px rgba(190, 150, 50, 0.18)
+                                `,
+                          borderRadius: '0px',
                         } : activeProduct === 3 && jenis.led ? {
                           boxShadow: `
                                 0 -10px 28px 6px rgba(215, 175, 60, 0.52),
