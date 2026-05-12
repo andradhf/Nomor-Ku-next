@@ -35,9 +35,9 @@ export default function Testimonials() {
         <div className="text-center mb-16">
           <p className="text-xs font-bold tracking-widest uppercase text-on-surface-variant mb-3">102 Ulasan Shopee · Rating 4.9★</p>
           <div className="w-8 h-px bg-on-surface-variant mx-auto mb-6" />
-          <h2 className="font-headline text-4xl md:text-5xl mb-4">
+          <h3 className="font-headline text-4xl mb-4">
             Mereka Sudah Buktikan.<br />Sekarang Giliran Rumahmu.
-          </h2>
+          </h3>
           <p className="text-on-surface-variant">Screenshot asli dari pembeli di Shopee — tanpa editan, tanpa rekayasa.</p>
         </div>
 

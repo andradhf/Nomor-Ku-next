@@ -17,10 +17,10 @@ export default function CTASection() {
       <div className="max-w-3xl mx-auto px-6 text-center relative z-10">
         <p className="text-xs font-bold tracking-widest uppercase text-on-primary opacity-70 mb-3">Mulai Hari Ini</p>
         <div className="w-8 h-px bg-on-primary opacity-40 mx-auto mb-8" />
-        <h2 className="font-headline text-5xl md:text-6xl mb-6 leading-tight">
+        <h3 className="font-headline text-4xl mb-6 leading-tight">
           Rumahmu Berhak Punya<br />
           <span className="italic">Identitas yang Spesial.</span>
-        </h2>
+        </h3>
         <p className="text-on-primary opacity-80 text-base mb-10 max-w-sm mx-auto leading-relaxed">
           Kamu sudah meluangkan waktu, energi, dan investasi untuk membuat rumah sesuai impian. Satu detail kecil ini yang menyempurnakan semuanya.
         </p>

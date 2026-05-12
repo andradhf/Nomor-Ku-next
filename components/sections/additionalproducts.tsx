@@ -58,7 +58,7 @@ export default function ProductHighlightCarousel() {
         <div className="text-center mb-8 md:mb-12">
           <p className="text-xs font-bold tracking-widest uppercase text-on-surface-variant mb-3">OUR COLLECTION</p>
           <div className="w-8 h-px bg-on-surface-variant mx-auto mb-6" />
-          <h2 className="font-headline text-4xl md:text-5xl text-on-surface mb-6">Temukan Koleksi Kami yang Lain</h2>
+          <h3 className="font-headline text-4xl text-on-surface mb-6">Temukan Koleksi Kami yang Lain</h3>
           <p className="text-on-surface-variant mt-2 text-sm md:text-base">
             Eksplorasi Kreasi Akrilik Terbaik Kami
           </p>

@@ -69,7 +69,7 @@ export default function ProductGrid() {
         <div className="text-center mb-16">
           <p className="text-xs font-bold tracking-widest uppercase text-on-surface-variant mb-3">Koleksi Best Seller</p>
           <div className="w-8 h-px bg-on-surface-variant mx-auto mb-6" />
-          <h2 className="font-headline text-4xl md:text-5xl text-on-surface mb-6">Temukan Karakter Rumahmu</h2>
+          <h3 className="font-headline text-4xl text-on-surface mb-6">Temukan Karakter Rumahmu</h3>
           <p className="text-on-surface-variant max-w-md mx-auto">Setiap model dirancang untuk arsitektur yang berbeda — mana yang paling mencerminkan rumahmu?</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

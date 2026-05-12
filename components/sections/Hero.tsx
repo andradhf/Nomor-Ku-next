@@ -9,7 +9,7 @@ export default function Hero() {
           <span className="inline-block py-1 px-3 bg-secondary-container text-on-secondary-container rounded-full text-[11px] font-medium tracking-[0.2em] uppercase mb-6">
             PREMIUM HOUSE NUMBER · AKRILO CREATIONS
           </span>
-          <h1 className="font-headline text-[40px] md:text-[62px] text-on-background leading-[1.1] tracking-tight mb-6">
+          <h1 className="font-headline text-5xl text-on-background leading-[1.1] tracking-tight mb-6">
             Rumah yang
             <br />
             Elegan

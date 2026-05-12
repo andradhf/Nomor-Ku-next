@@ -90,7 +90,7 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
     canvas.width = CW;
     canvas.height = CH;
 
-    const currentJenis = { ...jenis, led: activeProduct === 1 ? isLed : jenis.led };
+    const currentJenis = { ...jenis, led: (activeProduct === 1 || activeProduct === 3) ? isLed : jenis.led };
 
     if (product.shape === 'portrait') {
       drawPortrait(ctx, CW, CH, currentJenis, font, parsedTop, parsedBottom, subText);
@@ -113,8 +113,8 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
   const handleDisplayCart = () => {
     const item: CartItem = {
       id: Date.now(),
-      name: `Nomor Rumah Akrilik ${activeProduct === 1 ? (isLed ? 'Portrait LED' : 'Portrait') : activeProduct === 2 ? 'Landscape LED' : 'Lightbox LED'}`,
-      details: `- Jenis: ${jenis.label}${activeProduct === 1 && isLed ? ' (LED)' : ''}\n- Size: ${size.label} (${size.dim})\n- Font: ${font.label}\n- Kode / Nomor: ${mainText}\n- Nama Perumahan: ${subText}`,
+      name: `Nomor Rumah Akrilik ${activeProduct === 1 ? (isLed ? 'Portrait LED' : 'Portrait') : activeProduct === 2 ? 'Landscape LED' : (isLed ? 'Lightbox LED' : 'Lightbox')}`,
+      details: `- Jenis: ${jenis.label}${(activeProduct === 1 || activeProduct === 3) && isLed ? ' (LED)' : ''}\n- Size: ${size.label} (${size.dim})\n- Font: ${font.label}\n- Kode / Nomor: ${mainText}\n- Nama Perumahan: ${subText}`,
       price: size.price,
       imageSrc: realImgSrc,
       quantity: 1,
@@ -169,7 +169,7 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
                 </div>
               )}
 
-              {activeProduct === 1 && (
+              {(activeProduct === 1 || activeProduct === 3) && (
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">Opsi Pencahayaan</label>
                   <div className="flex flex-wrap gap-2">
@@ -299,7 +299,7 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
                                 0 0 70px 24px rgba(190, 150, 50, 0.18)
                                 `,
                           borderRadius: '0px',
-                        } : activeProduct === 3 && jenis.led ? {
+                        } : activeProduct === 3 && isLed ? {
                           boxShadow: `
                                 0 -10px 28px 6px rgba(215, 175, 60, 0.52),
                                 0 10px 28px 6px rgba(215, 175, 60, 0.48),

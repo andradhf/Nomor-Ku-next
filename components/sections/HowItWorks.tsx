@@ -28,9 +28,9 @@ export default function HowItWorks() {
         <div className="text-center mb-16">
           <p className="text-xs font-bold tracking-widest uppercase text-on-surface-variant mb-3">Cara Pesan</p>
           <div className="w-8 h-px bg-on-surface-variant mx-auto mb-6" />
-          <h2 className="font-headline text-4xl md:text-5xl">
+          <h3 className="font-headline text-4xl">
             Dari Layar ke Depan Pintu<br />dalam 4 Langkah Mudah
-          </h2>
+          </h3>
         </div>
         <div className="relative flex flex-col md:flex-row justify-between items-center md:items-start gap-12">
           {/* Connector line */}
