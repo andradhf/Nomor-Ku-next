@@ -10,17 +10,24 @@ export default function Hero() {
             PREMIUM HOUSE NUMBER · AKRILO CREATIONS
           </span>
           <h1 className="font-headline text-[40px] md:text-[62px] text-on-background leading-[1.1] tracking-tight mb-6">
-            Sambut Tamu dengan Kesan Pertama yang <span className="text-primary italic">Hangat</span>
+            Rumah yang
+            <br />
+            Elegan
+            <br />
+            Dimulai dari
+            <br />
+            <span className="text-primary italic">Hal Pertama </span>
+            yang Dilihat
           </h1>
           <p className="text-on-surface-variant/70 text-[15px] md:text-[16px] font-normal max-w-md mb-10 leading-relaxed">
-            Nomor rumah custom dari material akrilik premium. Tahan cuaca, tampil elegan, dan fully customizable.
+          Sebelum tamu masuk ke dalam, mereka sudah menilai rumahmu. Nomor rumah akrilik premium kami bukan sekadar penanda — ini adalah pernyataan selera yang berbicara bahkan sebelum pintu terbuka.
           </p>
           <div className="flex flex-wrap gap-4">
-            <Link href="#koleksi" className="px-8 py-4 bg-primary text-on-primary rounded-xl font-bold shadow-lg shadow-primary/20 hover:translate-y-[-2px] transition-all">
-              Lihat Koleksi
+            <Link href="/checkout" className="px-8 py-4 bg-primary text-on-primary rounded-xl font-bold shadow-lg shadow-primary/20 hover:translate-y-[-2px] transition-all">
+              Coba Preview Desainmu Sekarang
             </Link>
-            <Link href="#cara-pesan" className="px-8 py-4 border border-outline-variant text-on-surface rounded-xl font-bold hover:bg-surface-container transition-all">
-              Cara Kerja
+            <Link href="#koleksi" className="px-8 py-4 border border-outline-variant text-on-surface rounded-xl font-bold hover:bg-surface-container transition-all">
+              Lihat Koleksi
             </Link>
           </div>
         </div>

@@ -14,12 +14,24 @@ export default function CTASection() {
           className="object-cover"
         />
       </div>
-      <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
-        <h2 className="font-headline text-4xl md:text-6xl mb-8 leading-tight">
-          Rumahmu Berhak Punya<br />Identitas yang Spesial
+      <div className="max-w-3xl mx-auto px-6 text-center relative z-10">
+        <p className="text-xs font-bold tracking-widest uppercase text-on-primary opacity-70 mb-3">Mulai Hari Ini</p>
+        <div className="w-8 h-px bg-on-primary opacity-40 mx-auto mb-8" />
+        <h2 className="font-headline text-5xl md:text-6xl mb-6 leading-tight">
+          Rumahmu Berhak Punya<br />
+          <span className="italic">Identitas yang Spesial.</span>
         </h2>
-        <p className="text-on-primary-container text-lg mb-12 max-w-2xl mx-auto">
-          Mulai rancang nomor rumah impianmu hari ini dan rasakan kebanggaan setiap kali tiba di rumah.
+        <p className="text-on-primary opacity-80 text-base mb-10 max-w-sm mx-auto leading-relaxed">
+          Kamu sudah meluangkan waktu, energi, dan investasi untuk membuat rumah sesuai impian. Satu detail kecil ini yang menyempurnakan semuanya.
+        </p>
+        <button
+          onClick={() => router.push('/checkout')}
+          className="inline-flex items-center gap-2 px-10 py-4 bg-secondary-container text-on-secondary-container rounded-full font-bold text-base hover:opacity-90 transition-opacity mb-4"
+        >
+          → Lihat Preview Desainmu — Gratis
+        </button>
+        <p className="text-xs text-on-primary opacity-60">
+          Tidak perlu registrasi · Preview instan · Checkout hanya jika sudah puas
         </p>
       </div>
     </section>

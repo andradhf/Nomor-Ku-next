@@ -55,15 +55,13 @@ export default function ProductHighlightCarousel() {
     <section className="py-20 bg-background text-on-background" id='collections'>
       <div className="max-w-7xl mx-auto px-6">
         {/* Bagian Header */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 md:mb-12 gap-6 md:gap-0">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-serif text-primary tracking-wide">
-              OUR COLLECTION
-            </h2>
-            <p className="text-on-surface-variant mt-2 text-sm md:text-base">
-              Eksplorasi Kreasi Akrilik Terbaik Kami
-            </p>
-          </div>
+        <div className="text-center mb-8 md:mb-12">
+          <p className="text-xs font-bold tracking-widest uppercase text-on-surface-variant mb-3">OUR COLLECTION</p>
+          <div className="w-8 h-px bg-on-surface-variant mx-auto mb-6" />
+          <h2 className="font-headline text-4xl md:text-5xl text-on-surface mb-6">Temukan Koleksi Kami yang Lain</h2>
+          <p className="text-on-surface-variant mt-2 text-sm md:text-base">
+            Eksplorasi Kreasi Akrilik Terbaik Kami
+          </p>
         </div>
         <div className="grid grid-flow-col auto-cols-[100%] md:auto-cols-[calc(50%-1rem)] lg:auto-cols-[calc(33.33333333%-1.5rem)] gap-4 md:gap-8 overflow-x-auto snap-x snap-mandatory py-6">
           {products.map((item) => (

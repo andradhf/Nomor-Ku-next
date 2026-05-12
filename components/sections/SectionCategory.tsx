@@ -28,8 +28,15 @@ export default function MasterpiecesSection() {
 
                 {/* Bagian Header */}
                 <div className="text-center mb-12 space-y-4">
+                    <h4>KENAPA INI PENTING</h4>
                     <h2 className="text-[24px] text-2xl md:text-4xl font-serif text-primary">
-                        CRAFTED FOR YOUR HOME
+                        Kamu sudah investasi jutaan untuk
+                        <br />
+                        interior.
+                        <br />
+                        Tapi kenapa nomor rumahmu masih
+                        <br />
+                        <span className="text-primary italic">terlihat seperti milik semua orang?</span>
                     </h2>
 
                     {/* Garis pemisah dengan titik */}
@@ -40,7 +47,9 @@ export default function MasterpiecesSection() {
                     </div>
 
                     <p className="text-[18px] font-medium text-gray-500 text-sm md:text-base">
-                        Bukan sekadar angka — ini identitas rumahmu.
+                        Nomor rumah standar dari developer bukan bagian dari identitasmu. Ia <br />
+                        hanya placeholder. Saatnya ganti dengan sesuatu yang memang <br />
+                        mencerminkan siapa kamu — dan betapa kamu menghargai detail.
                     </p>
                 </div>
 

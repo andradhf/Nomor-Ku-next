@@ -7,29 +7,33 @@ import Link from 'next/link';
 const products = [
   {
     id: '1',
-    name: 'Nomor Rumah Akrilik (Black Silver)',
-    desc: 'Nomor Rumah Akrilik Double Layer Premium Cutting & Nomor Rumah Minimalis Elegan Tahan Cuaca Custom.',
+    badge: '⭐ BEST SELLER',
+    name: 'Black Silver Portrait',
+    desc: 'Kontras elegan hitam-silver untuk rumah cluster modern. Klasik yang tidak pernah salah.',
     price: 'Rp 150.000',
     imgSrc: '/images/produk_grid_norumah1.png'
   },
   {
     id: '2',
-    name: 'Nomor Rumah Akrilik (White Black)',
-    desc: 'Nomor Rumah Akrilik Double Layer Premium Cutting & Nomor Rumah Minimalis Elegan Tahan Cuaca Custom.',
+    badge: '✦ CLEAN MINIMAL',
+    name: 'White Black Portrait',
+    desc: 'Bersih, segar, dan modern. Cocok untuk rumah dengan konsep Scandinavian atau minimalis.',
     price: 'Rp 129.000',
     imgSrc: '/images/produk_grid_norumah2.png'
   },
   {
     id: '3',
-    name: 'Nomor Rumah Akrilix LED Solar Panel',
-    desc: 'Nomor Rumah Solar Panel LED | Lampu Alamat Rumah Otomatis Tanpa Kabel & Custom Nama & Nomor.',
+    badge: '✦ PREMIUM PICK',
+    name: 'LED Solar Panel Landscape',
+    desc: 'Menyala otomatis saat malam. Rumah terlihat premium 24 jam — tanpa biaya listrik tambahan.',
     price: 'Rp 169.000',
     imgSrc: '/images/nomor_led_l.png'
   },
   {
     id: '4',
-    name: 'Nomor Rumah Solar Panel LED Putih Boxl',
-    desc: 'Nomor Rumah Solar Panel LED Putih Box | Lampu Alamat Rumah Otomatis Tanpa Kabel | Custom Nama & Nomor.',
+    badge: '✦ LUXURY EDITION',
+    name: 'Golden Wood Edition',
+    desc: 'Sentuhan emas bertemu tekstur kayu — untuk hunian yang ingin tampil mewah tanpa berlebihan.',
     price: 'Rp 138.000 - Rp 350.000',
     imgSrc: '/images/produk_led_box.png'
   }
@@ -62,14 +66,11 @@ export default function ProductGrid() {
   return (
     <section className="py-24" id="koleksi">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-          <div>
-            <h2 className="font-headline text-4xl text-on-surface mb-4">Pilih Karakter Rumahmu</h2>
-            <p className="text-on-surface-variant max-w-lg">Koleksi desain kurasi kami yang dirancang untuk menyatu sempurna dengan berbagai gaya arsitektur.</p>
-          </div>
-          <Link href="/checkout" className="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all w-fit">
-            Lihat Semua Koleksi <span className="material-symbols-outlined">arrow_forward</span>
-          </Link>
+        <div className="text-center mb-16">
+          <p className="text-xs font-bold tracking-widest uppercase text-on-surface-variant mb-3">Koleksi Best Seller</p>
+          <div className="w-8 h-px bg-on-surface-variant mx-auto mb-6" />
+          <h2 className="font-headline text-4xl md:text-5xl text-on-surface mb-6">Temukan Karakter Rumahmu</h2>
+          <p className="text-on-surface-variant max-w-md mx-auto">Setiap model dirancang untuk arsitektur yang berbeda — mana yang paling mencerminkan rumahmu?</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {products.map((product) => (
@@ -83,6 +84,7 @@ export default function ProductGrid() {
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
+              <p className="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant mb-1 px-2">{product.badge}</p>
               <h3 className="font-headline text-xl mb-2 px-2">{product.name}</h3>
               <p className="text-sm text-on-surface-variant mb-6 px-2">{product.desc}</p>
               <button

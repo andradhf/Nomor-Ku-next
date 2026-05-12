@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 const testimonials = [
   {
@@ -32,8 +33,12 @@ export default function Testimonials() {
     <section className="py-24 bg-surface-container-low" id="testimoni">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="font-headline text-4xl mb-4">Cerita dari Pemilik Rumah</h2>
-          <p className="text-on-surface-variant">Lebih dari sekadar penanda alamat, Inilah ulasan jujur dari pelanggan kami.</p>
+          <p className="text-xs font-bold tracking-widest uppercase text-on-surface-variant mb-3">102 Ulasan Shopee · Rating 4.9★</p>
+          <div className="w-8 h-px bg-on-surface-variant mx-auto mb-6" />
+          <h2 className="font-headline text-4xl md:text-5xl mb-4">
+            Mereka Sudah Buktikan.<br />Sekarang Giliran Rumahmu.
+          </h2>
+          <p className="text-on-surface-variant">Screenshot asli dari pembeli di Shopee — tanpa editan, tanpa rekayasa.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -96,6 +101,17 @@ export default function Testimonials() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* CTA Button */}
+        <div className="text-center mt-16">
+          <Link
+            href="/checkout"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-on-surface text-surface rounded-full font-bold text-base hover:opacity-90 transition-opacity"
+          >
+            <span>→</span> Saya Mau Coba Preview Desainku
+          </Link>
+          <p className="text-xs text-on-surface-variant mt-4">Bergabung dengan 500+ pemilik rumah yang sudah puas</p>
         </div>
       </div>
     </section>
