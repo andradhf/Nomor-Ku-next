@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CustomizerSection from './sections/CustomizerSection';
-import CheckoutSection from './sections/CheckoutSection';
 import { CartItem } from './types';
 
 export default function CheckoutPage() {
@@ -31,12 +30,6 @@ export default function CheckoutPage() {
       <Header />
       <main className="pt-20">
         <CustomizerSection onAddToCart={handleAddToCart} />
-        <CheckoutSection 
-          cart={cart}
-          cartTotal={cartTotal}
-          updateQty={updateQty}
-          removeItem={removeItem}
-        />
       </main>
       <Footer />
     </>
