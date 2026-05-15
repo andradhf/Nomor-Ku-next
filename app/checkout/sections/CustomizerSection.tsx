@@ -144,8 +144,16 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
     };
     onAddToCart(item);
 
+    // Build item_code from variant keys (mirrors availableSizes key logic)
+    const sizesKey = (() => {
+      if (!product.sizesByJenis) return jenis.id;
+      if (activeProduct === 1) return isLed ? `${jenis.id}-led` : jenis.id;
+      if (activeProduct === 3) return isLed ? 'white-solar' : 'white-solar-non-led';
+      return jenis.id;
+    })();
+
     addToGlobalCart({
-      item_code: size.id,
+      item_code: `${sizesKey}-${size.id}`,
       item_name: `Nomor Rumah Akrilik ${productLabel}`,
       quantity: 1,
       image: realImgSrc || undefined,

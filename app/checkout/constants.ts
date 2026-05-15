@@ -39,35 +39,35 @@ export const PRODUCTS: Record<number, ProductConfig> = {
     sizesByJenis: {
       // ── Non-LED ──────────────────────────────────────────────────────────────
       'black-silver': [
-        { id: 'NMDL-M1430-BS',  label: 'M',  dim: '14x30 cm', price:  75000 },
-        { id: 'NMDL-L1632-BS',  label: 'L',  dim: '16x32 cm', price:  87000 },
-        { id: 'NMDLXL1833-BS', label: 'XL', dim: '18x33 cm', price:  99000 },
+        { id: 'M',  label: 'M',  dim: '14x30 cm', price:  75000 },
+        { id: 'L',  label: 'L',  dim: '16x32 cm', price:  87000 },
+        { id: 'XL', label: 'XL', dim: '18x33 cm', price:  99000 },
       ],
       'black-frosted': [
-        { id: 'NMDL-M1430-BF',  label: 'M',  dim: '14x30 cm', price:  71000 },
-        { id: 'NMDL-L1632-BF',  label: 'L',  dim: '16x32 cm', price:  82000 },
-        { id: 'NMDL-XL1833-BF', label: 'XL', dim: '18x33 cm', price:  92000 },
+        { id: 'M',  label: 'M',  dim: '14x30 cm', price:  71000 },
+        { id: 'L',  label: 'L',  dim: '16x32 cm', price:  82000 },
+        { id: 'XL', label: 'XL', dim: '18x33 cm', price:  92000 },
       ],
       'white-black': [
-        { id: 'NMDL-M1430-WB',  label: 'M',  dim: '14x30 cm', price:  63000 },
-        { id: 'NMDL-L1632-WB',  label: 'L',  dim: '16x32 cm', price:  73000 },
-        { id: 'NMDL-XL1833-WB', label: 'XL', dim: '18x33 cm', price:  85000 },
+        { id: 'M',  label: 'M',  dim: '14x30 cm', price:  63000 },
+        { id: 'L',  label: 'L',  dim: '16x32 cm', price:  73000 },
+        { id: 'XL', label: 'XL', dim: '18x33 cm', price:  85000 },
       ],
       // ── LED ──────────────────────────────────────────────────────────────────
       'black-silver-led': [
-        { id: 'NMDL-M1430-BS-LED',  label: 'M',  dim: '14x30 cm', price:  75000 },
-        { id: 'NMDL-L1632-BS-LED',  label: 'L',  dim: '16x32 cm', price:  87000 },
-        { id: 'NMDL-XL1833-BF-LED', label: 'XL', dim: '18x33 cm', price:  99000 },
+        { id: 'M',  label: 'M',  dim: '14x30 cm', price:  75000 },
+        { id: 'L',  label: 'L',  dim: '16x32 cm', price:  87000 },
+        { id: 'XL', label: 'XL', dim: '18x33 cm', price:  99000 },
       ],
       'black-frosted-led': [
-        { id: 'NMDL-M1430-BF-LED',  label: 'M',  dim: '14x30 cm', price: 150000 },
-        { id: 'NMDL-L1632-BF-LED',  label: 'L',  dim: '16x32 cm', price: 165000 },
-        { id: 'NMDL-XL1833-BF-LED', label: 'XL', dim: '18x33 cm', price: 180000 },
+        { id: 'M',  label: 'M',  dim: '14x30 cm', price: 150000 },
+        { id: 'L',  label: 'L',  dim: '16x32 cm', price: 165000 },
+        { id: 'XL', label: 'XL', dim: '18x33 cm', price: 180000 },
       ],
       'white-black-led': [
-        { id: 'NMDL-M1430-WB-LED',  label: 'M',  dim: '14x30 cm', price:  63000 },
-        { id: 'NMDL-L1632-WB-LED',  label: 'L',  dim: '16x32 cm', price:  73000 },
-        { id: 'NMDL-XL1833-WB-LED', label: 'XL', dim: '18x33 cm', price:  85000 },
+        { id: 'M',  label: 'M',  dim: '14x30 cm', price:  63000 },
+        { id: 'L',  label: 'L',  dim: '16x32 cm', price:  73000 },
+        { id: 'XL', label: 'XL', dim: '18x33 cm', price:  85000 },
       ],
     },
   },
@@ -79,9 +79,9 @@ export const PRODUCTS: Record<number, ProductConfig> = {
       { id: 'black-led', label: 'Black LED Solar', bg: '#0d0d0d', textColor: '#C8C8C8', subColor: '#C8C8C8', lineColor: '#111111', frameColor: null, led: true },
     ],
     sizes: [
-      { id: 'NMHTN-1815', label: 'S', dim: '18×15 cm',   price: 89900  },
-      { id: 'NMHTN-24515', label: 'M', dim: '24,5×15 cm', price: 129900 },
-      { id: 'NMHTN-24522', label: 'L', dim: '24,5×22 cm', price: 179900 },
+      { id: 'S', label: 'S', dim: '18×15 cm',   price: 89900  },
+      { id: 'M', label: 'M', dim: '25,5×15 cm', price: 129900 },
+      { id: 'L', label: 'L', dim: '24,5×22 cm', price: 179900 },
     ],
   },
   3: {
@@ -94,15 +94,15 @@ export const PRODUCTS: Record<number, ProductConfig> = {
     sizesByJenis: {
       // ── LED ──────────────────────────────────────────────────────────────────
       'white-solar': [
-        { id: 'NRBS-37177-SOLAR',  label: 'M',  dim: '37×17×7 cm', price: 314820 },
-        { id: 'NRBS-40207-SOLAR',  label: 'L',  dim: '40×20×7 cm', price: 337080 },
-        { id: 'NRBS-45227-SOLAR', label: 'XL', dim: '45×22×7 cm', price: 371000 },
+        { id: 'M',  label: 'M',  dim: '37×17×7 cm', price: 314820 },
+        { id: 'L',  label: 'L',  dim: '40×20×7 cm', price: 337080 },
+        { id: 'XL', label: 'XL', dim: '45×22×7 cm', price: 371000 },
       ],
       // ── Non-LED ──────────────────────────────────────────────────────────────
       'white-solar-non-led': [
-        { id: 'NRBS-37177-NONSOLAR',  label: 'M',  dim: '37×17×7 cm', price: 146280 },
-        { id: 'NRBS-40207-NONSOLAR',  label: 'L',  dim: '40×20×7 cm', price: 180200 },
-        { id: 'NRBS-45227-NONSOLAR', label: 'XL', dim: '45×22×7 cm', price: 214120 },
+        { id: 'M',  label: 'M',  dim: '37×17×7 cm', price: 146280 },
+        { id: 'L',  label: 'L',  dim: '40×20×7 cm', price: 180200 },
+        { id: 'XL', label: 'XL', dim: '45×22×7 cm', price: 214120 },
       ],
     },
   },
