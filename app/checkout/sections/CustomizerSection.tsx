@@ -24,7 +24,20 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
 
   const product = PRODUCTS[activeProduct];
   const jenis = product.jenis[jenisIdx];
-  const size = product.sizes[sizeIdx];
+
+  const availableSizes = (() => {
+    if (!product.sizesByJenis) return product.sizes;
+    if (activeProduct === 1) {
+      const key = isLed ? `${jenis.id}-led` : jenis.id;
+      return product.sizesByJenis[key] ?? product.sizes;
+    }
+    if (activeProduct === 3) {
+      const key = isLed ? 'white-solar' : 'white-solar-non-led';
+      return product.sizesByJenis[key] ?? product.sizes;
+    }
+    return product.sizesByJenis[jenis.id] ?? product.sizes;
+  })();
+  const size = availableSizes[sizeIdx] ?? availableSizes[0];
 
   const activeFamily = FONT_FAMILIES[familyIdx];
   const activeVariant = activeFamily.variants[variantIdx] || activeFamily.variants[0];
@@ -173,12 +186,12 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">Opsi Pencahayaan</label>
                   <div className="flex flex-wrap gap-2">
-                    <button onClick={() => setIsLed(false)}
+                    <button onClick={() => { setIsLed(false); setSizeIdx(0); }}
                       className={`px-4 py-2 rounded-lg border text-sm font-medium transition-all ${!isLed
                         ? 'bg-gray-900 text-white border-gray-900'
                         : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400'
                         }`}>Tanpa LED</button>
-                    <button onClick={() => setIsLed(true)}
+                    <button onClick={() => { setIsLed(true); setSizeIdx(0); }}
                       className={`px-4 py-2 rounded-lg border text-sm font-medium transition-all ${isLed
                         ? 'bg-gray-900 text-white border-gray-900'
                         : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400'
@@ -190,7 +203,7 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
               <div>
                 <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">Size</label>
                 <div className="flex flex-wrap gap-2">
-                  {product.sizes.map((s, i) => (
+                  {availableSizes.map((s, i) => (
                     <button key={s.id} onClick={() => setSizeIdx(i)}
                       className={`px-4 py-2 rounded-lg border text-sm font-medium transition-all ${sizeIdx === i
                         ? 'bg-gray-900 text-white border-gray-900'
@@ -320,7 +333,7 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
                   Foto Produk — {jenis.label} (klik untuk pilih ukuran)
                 </p>
                 <div className="grid gap-3 grid-cols-3">
-                  {product.sizes.map((s, si) => {
+                  {availableSizes.map((s, si) => {
                     const key = `${jenis.id}_${s.id}`;
                     const src = product.images[key] ?? '';
                     const isSelected = si === sizeIdx;

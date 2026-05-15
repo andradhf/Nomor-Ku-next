@@ -35,12 +35,43 @@ export const PRODUCTS: Record<number, ProductConfig> = {
       { id: 'black-frosted', label: 'Black Frosted', bg: '#1a1a1a', textColor: '#d8d8d8', subColor: '#aaaaaa', lineColor: '#d8d8d8', frameColor: '#606060', led: false },
       { id: 'white-black',   label: 'White Black',   bg: '#f0f0f0', textColor: '#111111', subColor: '#444444', lineColor: '#111111', frameColor: '#888888', led: false },
     ],
-    sizes: [
-      { id: 'M',  label: 'M',  dim: '14x30 cm',  price: 57900  },
-      { id: 'L',  label: 'L',  dim: '16x32 cm', price: 79900  },
-      { id: 'XL', label: 'XL', dim: '18x33 cm', price: 109900 },
-    ],
+    sizes: [],
+    sizesByJenis: {
+      // ── Non-LED ──────────────────────────────────────────────────────────────
+      'black-silver': [
+        { id: 'M',  label: 'M',  dim: '14x30 cm', price:  75000 },
+        { id: 'L',  label: 'L',  dim: '16x32 cm', price:  87000 },
+        { id: 'XL', label: 'XL', dim: '18x33 cm', price:  99000 },
+      ],
+      'black-frosted': [
+        { id: 'M',  label: 'M',  dim: '14x30 cm', price:  71000 },
+        { id: 'L',  label: 'L',  dim: '16x32 cm', price:  82000 },
+        { id: 'XL', label: 'XL', dim: '18x33 cm', price:  92000 },
+      ],
+      'white-black': [
+        { id: 'M',  label: 'M',  dim: '14x30 cm', price:  63000 },
+        { id: 'L',  label: 'L',  dim: '16x32 cm', price:  73000 },
+        { id: 'XL', label: 'XL', dim: '18x33 cm', price:  85000 },
+      ],
+      // ── LED ──────────────────────────────────────────────────────────────────
+      'black-silver-led': [
+        { id: 'M',  label: 'M',  dim: '14x30 cm', price:  75000 },
+        { id: 'L',  label: 'L',  dim: '16x32 cm', price:  87000 },
+        { id: 'XL', label: 'XL', dim: '18x33 cm', price:  99000 },
+      ],
+      'black-frosted-led': [
+        { id: 'M',  label: 'M',  dim: '14x30 cm', price: 150000 },
+        { id: 'L',  label: 'L',  dim: '16x32 cm', price: 165000 },
+        { id: 'XL', label: 'XL', dim: '18x33 cm', price: 180000 },
+      ],
+      'white-black-led': [
+        { id: 'M',  label: 'M',  dim: '14x30 cm', price:  63000 },
+        { id: 'L',  label: 'L',  dim: '16x32 cm', price:  73000 },
+        { id: 'XL', label: 'XL', dim: '18x33 cm', price:  85000 },
+      ],
+    },
   },
+
   2: {
     shape: 'landscape',
     images: P2_IMAGES,
@@ -59,11 +90,21 @@ export const PRODUCTS: Record<number, ProductConfig> = {
     jenis: [
       { id: 'white-solar', label: 'White Solar LED', bg: '#f5f0e0', textColor: '#111111', subColor: '#222222', lineColor: '#333333', frameColor: null, led: true },
     ],
-    sizes: [
-      { id: 'M',  label: 'M',  dim: '37×17×7 cm',  price: 291500 },
-      { id: 'L',  label: 'L',  dim: '40×20×7 cm',  price: 308000 },
-      { id: 'XL', label: 'XL', dim: '45×22×7 cm',  price: 340000 },
-    ],
+    sizes: [],
+    sizesByJenis: {
+      // ── LED ──────────────────────────────────────────────────────────────────
+      'white-solar': [
+        { id: 'M',  label: 'M',  dim: '37×17×7 cm', price: 314820 },
+        { id: 'L',  label: 'L',  dim: '40×20×7 cm', price: 337080 },
+        { id: 'XL', label: 'XL', dim: '45×22×7 cm', price: 371000 },
+      ],
+      // ── Non-LED ──────────────────────────────────────────────────────────────
+      'white-solar-non-led': [
+        { id: 'M',  label: 'M',  dim: '37×17×7 cm', price: 146280 },
+        { id: 'L',  label: 'L',  dim: '40×20×7 cm', price: 180200 },
+        { id: 'XL', label: 'XL', dim: '45×22×7 cm', price: 214120 },
+      ],
+    },
   },
 };
 
