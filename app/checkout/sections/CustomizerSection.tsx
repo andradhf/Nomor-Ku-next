@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { PRODUCTS, FONT_FAMILIES, drawPortrait, drawLandscape, drawLightBox, formatRp } from '../constants';
 import { CartItem, FontOption } from '../types';
+import { useCartStore } from '@/store/cartStore';
 
 interface CustomizerProps {
   onAddToCart: (item: CartItem) => void;
@@ -19,6 +20,9 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
   const [subText, setSubText] = useState('Citra Harmoni');
   const [fontsReady, setFontsReady] = useState(false);
   const [isLed, setIsLed] = useState(false);
+  const [toastVisible, setToastVisible] = useState(false);
+
+  const addToGlobalCart = useCartStore((state) => state.addItem);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -124,15 +128,49 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
   };
 
   const handleDisplayCart = () => {
+    const productLabel = activeProduct === 1
+      ? (isLed ? 'Portrait LED' : 'Portrait')
+      : activeProduct === 2
+        ? 'Landscape LED'
+        : (isLed ? 'Lightbox LED' : 'Lightbox');
+
     const item: CartItem = {
       id: Date.now(),
-      name: `Nomor Rumah Akrilik ${activeProduct === 1 ? (isLed ? 'Portrait LED' : 'Portrait') : activeProduct === 2 ? 'Landscape LED' : (isLed ? 'Lightbox LED' : 'Lightbox')}`,
+      name: `Nomor Rumah Akrilik ${productLabel}`,
       details: `- Jenis: ${jenis.label}${(activeProduct === 1 || activeProduct === 3) && isLed ? ' (LED)' : ''}\n- Size: ${size.label} (${size.dim})\n- Font: ${font.label}\n- Kode / Nomor: ${mainText}\n- Nama Perumahan: ${subText}`,
       price: size.price,
       imageSrc: realImgSrc,
       quantity: 1,
     };
     onAddToCart(item);
+
+    // Build item_code from variant keys (mirrors availableSizes key logic)
+    const sizesKey = (() => {
+      if (!product.sizesByJenis) return jenis.id;
+      if (activeProduct === 1) return isLed ? `${jenis.id}-led` : jenis.id;
+      if (activeProduct === 3) return isLed ? 'white-solar' : 'white-solar-non-led';
+      return jenis.id;
+    })();
+
+    addToGlobalCart({
+      item_code: `${sizesKey}-${size.id}`,
+      item_name: `Nomor Rumah Akrilik ${productLabel}`,
+      quantity: 1,
+      image: realImgSrc || undefined,
+      price: size.price,
+      customization: {
+        jenis: jenis.label + ((activeProduct === 1 || activeProduct === 3) && isLed ? ' (LED)' : ''),
+        ukuran: `${size.label} — ${size.dim}`,
+        font: font.label,
+        'kode/nomor': mainText,
+        ...(product.shape === 'lightbox'
+          ? { 'nomor rumah': subText }
+          : { 'nama perumahan': subText }),
+      },
+    });
+
+    setToastVisible(true);
+    setTimeout(() => setToastVisible(false), 3000);
   };
 
   const displayW = product.shape === 'portrait' ? 158 : product.shape === 'landscape' ? 300 : 143;
@@ -366,6 +404,17 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
             </div>
           </div>
         </div>
+      </div>
+
+      <div
+        className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-gray-900 text-white px-6 py-3 rounded-xl text-sm font-medium shadow-xl flex items-center gap-2 transition-all duration-300 whitespace-nowrap ${
+          toastVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+        }`}
+      >
+        <svg className="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+        </svg>
+        Ditambahkan ke keranjang!
       </div>
     </section>
   );

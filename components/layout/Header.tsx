@@ -1,8 +1,14 @@
 'use client';
 
 import Link from 'next/link';
+import { ShoppingCart } from 'lucide-react';
+import { useCartStore } from '@/store/cartStore';
 
 export default function Header() {
+  const totalItems = useCartStore((state) =>
+    state.items.reduce((sum, i) => sum + i.quantity, 0)
+  );
+
   return (
     <nav className="absolute top-0 w-full z-50 bg-transparent">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -23,12 +29,26 @@ export default function Header() {
             Testimoni
           </Link>
         </div>
-        <Link
-          href="/checkout"
-          className="relative bg-primary text-on-primary px-6 py-2.5 rounded-xl font-medium transition-all duration-300 hover:bg-primary-container scale-95 active:scale-100 flex items-center gap-2 group"
-        >
-          <span>Pesan Sekarang</span>
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link
+            href="/cart"
+            className="relative p-2 text-primary hover:text-on-primary transition-colors duration-200"
+            aria-label="Keranjang belanja"
+          >
+            <ShoppingCart className="w-6 h-6" />
+            {totalItems > 0 && (
+              <span className="absolute -top-1 -right-1 bg-primary text-on-primary text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center leading-none">
+                {totalItems > 99 ? '99+' : totalItems}
+              </span>
+            )}
+          </Link>
+          <Link
+            href="/checkout"
+            className="relative bg-primary text-on-primary px-6 py-2.5 rounded-xl font-medium transition-all duration-300 hover:bg-primary-container scale-95 active:scale-100 flex items-center gap-2 group"
+          >
+            <span>Pesan Sekarang</span>
+          </Link>
+        </div>
       </div>
     </nav>
   );

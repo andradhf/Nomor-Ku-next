@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(New-Item -ItemType File -Path \"C:\\\\Users\\\\alamS\\\\Nomor-Ku-next\\\\.env.local\" -Force)",
+      "Bash(Out-Null)",
+      "Bash(Set-Content -Path \"C:\\\\Users\\\\alamS\\\\Nomor-Ku-next\\\\.env.local\" -Value \"NEXT_PUBLIC_TURNSTILE_SITE_KEY=1x00000000000000000000AA`nNEXT_PUBLIC_API_BASE_URL=http://localhost:3000\" -Encoding utf8)"
+    ]
+  }
+}
