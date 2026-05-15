@@ -262,16 +262,24 @@ export default function CheckoutFormPage() {
               </div>
 
               <div>
-                <Turnstile
-                  key={captchaKey}
-                  siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
-                  onSuccess={(token) => setCaptchaToken(token)}
-                  onError={() => setCaptchaToken(null)}
-                  onExpire={() => {
-                    setCaptchaToken(null);
-                    setCaptchaKey((k) => k + 1);
-                  }}
-                />
+                {process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ? (
+                  <Turnstile
+                    key={captchaKey}
+                    siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+                    onSuccess={(token) => setCaptchaToken(token)}
+                    onError={() => setCaptchaToken(null)}
+                    onExpire={() => {
+                      setCaptchaToken(null);
+                      setCaptchaKey((k) => k + 1);
+                    }}
+                  />
+                ) : (
+                  <p className="text-xs text-red-500 p-3 bg-red-50 rounded-xl border border-red-200">
+                    Konfigurasi captcha belum ditemukan. Tambahkan{' '}
+                    <code className="font-mono">NEXT_PUBLIC_TURNSTILE_SITE_KEY</code> ke{' '}
+                    <code className="font-mono">.env.local</code> lalu restart server.
+                  </p>
+                )}
               </div>
 
               {apiError && (
