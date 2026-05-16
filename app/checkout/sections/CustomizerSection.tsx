@@ -144,16 +144,8 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
     };
     onAddToCart(item);
 
-    // Build item_code from variant keys (mirrors availableSizes key logic)
-    const sizesKey = (() => {
-      if (!product.sizesByJenis) return jenis.id;
-      if (activeProduct === 1) return isLed ? `${jenis.id}-led` : jenis.id;
-      if (activeProduct === 3) return isLed ? 'white-solar' : 'white-solar-non-led';
-      return jenis.id;
-    })();
-
     addToGlobalCart({
-      item_code: `${sizesKey}-${size.id}`,
+      item_code: size.id,
       item_name: `Nomor Rumah Akrilik ${productLabel}`,
       quantity: 1,
       image: realImgSrc || undefined,
@@ -162,10 +154,10 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
         jenis: jenis.label + ((activeProduct === 1 || activeProduct === 3) && isLed ? ' (LED)' : ''),
         ukuran: `${size.label} — ${size.dim}`,
         font: font.label,
-        'kode/nomor': mainText,
-        ...(product.shape === 'lightbox'
-          ? { 'nomor rumah': subText }
-          : { 'nama perumahan': subText }),
+        font_family: activeFamily.id,
+        font_style: activeVariant.label,
+        item_numbers: mainText,
+        item_address: subText,
       },
     });
 

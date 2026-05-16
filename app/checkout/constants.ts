@@ -41,7 +41,7 @@ export const PRODUCTS: Record<number, ProductConfig> = {
       'black-silver': [
         { id: 'NMDL-M1430-BS',  label: 'M',  dim: '14x30 cm', price:  75000 },
         { id: 'NMDL-L1632-BS',  label: 'L',  dim: '16x32 cm', price:  87000 },
-        { id: 'NMDLXL1833-BS', label: 'XL', dim: '18x33 cm', price:  99000 },
+        { id: 'NMDL-XL1833-BS', label: 'XL', dim: '18x33 cm', price:  99000 },
       ],
       'black-frosted': [
         { id: 'NMDL-M1430-BF',  label: 'M',  dim: '14x30 cm', price:  71000 },
@@ -57,7 +57,7 @@ export const PRODUCTS: Record<number, ProductConfig> = {
       'black-silver-led': [
         { id: 'NMDL-M1430-BS-LED',  label: 'M',  dim: '14x30 cm', price:  75000 },
         { id: 'NMDL-L1632-BS-LED',  label: 'L',  dim: '16x32 cm', price:  87000 },
-        { id: 'NMDL-XL1833-BF-LED', label: 'XL', dim: '18x33 cm', price:  99000 },
+        { id: 'NMDL-XL1833-BS-LED', label: 'XL', dim: '18x33 cm', price:  99000 },
       ],
       'black-frosted-led': [
         { id: 'NMDL-M1430-BF-LED',  label: 'M',  dim: '14x30 cm', price: 150000 },

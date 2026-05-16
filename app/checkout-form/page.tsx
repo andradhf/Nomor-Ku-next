@@ -125,6 +125,18 @@ export default function CheckoutFormPage() {
         item_code: i.item_code,
         item_name: i.item_name,
         quantity: i.quantity,
+        content: [
+          {
+            item_numbers: (i.customization?.item_numbers as string) ?? '',
+            item_address: (i.customization?.item_address as string) ?? '',
+            item_style: [
+              {
+                Item_font: (i.customization?.font_family as string) ?? '',
+                Font_style: (i.customization?.font_style as string) ?? '',
+              },
+            ],
+          },
+        ],
       }));
 
       const res = await fetch(API_ENDPOINTS.paymentInitiate, {
