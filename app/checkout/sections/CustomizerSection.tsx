@@ -64,7 +64,7 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
     ? mainText.split('/')[1]?.trim() ?? ''
     : '';
 
-  const imageKey = `${jenis.id}_${size.id}`;
+  const imageKey = `${jenis.id}_${size.label}`;
   const realImgSrc = product.images[imageKey] ?? '';
 
   // ─── Load semua font lokal sekali saat mount ────────────────────────────────
@@ -364,7 +364,7 @@ export default function CustomizerSection({ onAddToCart }: CustomizerProps) {
                 </p>
                 <div className="grid gap-3 grid-cols-3">
                   {availableSizes.map((s, si) => {
-                    const key = `${jenis.id}_${s.id}`;
+                    const key = `${jenis.id}_${s.label}`;
                     const src = product.images[key] ?? '';
                     const isSelected = si === sizeIdx;
                     return (
