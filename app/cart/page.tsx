@@ -33,6 +33,12 @@ export default function CartPage() {
         <Header />
         <main className="pt-20 min-h-screen flex items-center justify-center">
           <div className="text-center px-6">
+            <Link href="/checkout" className="flex items-center gap-2 mb-6 text-gray-500 hover:text-gray-900 transition-colors cursor-pointer w-fit mx-auto text-sm font-medium">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              Kembali
+            </Link>
             <ShoppingBag className="w-16 h-16 mx-auto text-gray-300 mb-4" />
             <h2 className="font-headline text-2xl mb-2">Keranjang kosong</h2>
             <p className="text-gray-500 mb-8">Belum ada produk yang ditambahkan ke keranjang.</p>
@@ -54,6 +60,12 @@ export default function CartPage() {
       <Header />
       <main className="pt-20 min-h-screen bg-background">
         <div className="max-w-3xl mx-auto px-6 py-12">
+          <Link href="/checkout" className="flex items-center gap-2 mb-6 text-gray-500 hover:text-gray-900 transition-colors cursor-pointer w-fit text-sm font-medium">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Kembali
+          </Link>
           <div className="flex items-center justify-between mb-8">
             <h1 className="font-headline text-3xl">Keranjang Belanja</h1>
             <Link href="/checkout" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">

@@ -12,6 +12,7 @@ import { formatRp } from '@/app/checkout/constants';
 interface FormState {
   fullName: string;
   phone: string;
+  email: string;
   address: string;
   notes: string;
 }
@@ -19,6 +20,7 @@ interface FormState {
 interface FormErrors {
   fullName?: string;
   phone?: string;
+  email?: string;
   address?: string;
 }
 
@@ -33,12 +35,16 @@ function isValidPhone(phone: string): boolean {
   return /^(\+62|08)\d{8,13}$/.test(phone.replace(/[\s\-()]/g, ''));
 }
 
+function isValidEmail(email: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+}
+
 export default function CheckoutFormPage() {
   const router = useRouter();
   const { items, clearCart } = useCartStore();
 
   const [mounted, setMounted] = useState(false);
-  const [form, setForm] = useState<FormState>({ fullName: '', phone: '', address: '', notes: '' });
+  const [form, setForm] = useState<FormState>({ fullName: '', phone: '', email: '', address: '', notes: '' });
   const [errors, setErrors] = useState<FormErrors>({});
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const [captchaKey, setCaptchaKey] = useState(0);
@@ -68,6 +74,7 @@ export default function CheckoutFormPage() {
     const next: FormErrors = {};
     if (form.fullName.trim().length < 3) next.fullName = 'Nama minimal 3 karakter';
     if (!isValidPhone(form.phone)) next.phone = 'Format tidak valid — gunakan 08xx atau +62xx (10–15 digit)';
+    if (!isValidEmail(form.email)) next.email = 'Format email tidak valid';
     if (form.address.trim().length < 10) next.address = 'Alamat minimal 10 karakter';
     setErrors(next);
     return Object.keys(next).length === 0;
@@ -96,6 +103,7 @@ export default function CheckoutFormPage() {
             user: {
               name: form.fullName.trim(),
               phone: form.phone.trim(),
+              email: form.email.trim(),
               address: form.address.trim(),
               ...(form.notes.trim() ? { notes: form.notes.trim() } : {}),
             },
@@ -233,6 +241,26 @@ export default function CheckoutFormPage() {
                 />
                 {errors.phone && (
                   <p className="mt-1 text-xs text-red-500">{errors.phone}</p>
+                )}
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                  Email <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="email"
+                  value={form.email}
+                  onChange={(e) => updateField('email', e.target.value)}
+                  placeholder="nama@email.com"
+                  className={`w-full p-3 rounded-xl border focus:ring-2 focus:ring-gray-100 outline-none transition-all text-sm ${
+                    errors.email
+                      ? 'border-red-400 bg-red-50'
+                      : 'border-gray-200 bg-white focus:border-gray-900'
+                  }`}
+                />
+                {errors.email && (
+                  <p className="mt-1 text-xs text-red-500">{errors.email}</p>
                 )}
               </div>
 
