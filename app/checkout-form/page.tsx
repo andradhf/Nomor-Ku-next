@@ -139,8 +139,8 @@ export default function CheckoutFormPage() {
             item_address: (i.customization?.item_address as string) ?? '',
             item_style: [
               {
-                Item_font: (i.customization?.font_family as string) ?? '',
-                Font_style: (i.customization?.font_style as string) ?? '',
+                item_font: (i.customization?.font_family as string) ?? '',
+                font_style: (i.customization?.font_style as string) ?? '',
               },
             ],
           },
