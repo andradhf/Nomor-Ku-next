@@ -1,0 +1,15 @@
+services:
+  frontend:
+    image: nomorku-frontend:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL:?Isi URL backend di .env.docker}
+        NEXT_PUBLIC_TURNSTILE_SITE_KEY: ${NEXT_PUBLIC_TURNSTILE_SITE_KEY:?Isi site key Turnstile di .env.docker}
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:?Isi URL frontend di .env.docker}
+        NEXT_PUBLIC_WA_NUMBER: ${NEXT_PUBLIC_WA_NUMBER:-6281234567890}
+    ports:
+      - "${FRONTEND_BIND_ADDRESS:-127.0.0.1}:${FRONTEND_PORT:-3000}:3000"
+    init: true
+    restart: unless-stopped

@@ -1,6 +1,12 @@
 import type { NextConfig } from "next";
 
+const apiOrigin = new URL(
+  process.env.NEXT_PUBLIC_API_BASE_URL ||
+    "https://akrilo-backend-hono-production.up.railway.app"
+).origin;
+
 const nextConfig: NextConfig = {
+  output: "standalone",
   images: {
     remotePatterns: [
       {
@@ -24,7 +30,7 @@ const nextConfig: NextConfig = {
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com",
               "font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com",
               "img-src 'self' data: blob: https:",
-              "connect-src 'self' https://akrilo-backend-hono-production.up.railway.app https://challenges.cloudflare.com",
+              `connect-src 'self' ${apiOrigin} https://challenges.cloudflare.com`,
               "frame-src https://challenges.cloudflare.com",
               "frame-ancestors 'none'",
             ].join('; '),
